@@ -1,12 +1,13 @@
 import React from "react"
-import ReactDOM from "react-dom/client"
-import "./index.css"
+import { createRoot } from "react-dom/client"
 import App from "./app"
+import StyleLoader from "./styleLoader"
 import reportWebVitals from "./reportWebVitals"
 
-const root = ReactDOM.createRoot(document.getElementById("root"))
-root.render(
+const app = createRoot(document.getElementById("root"))
+app.render(
   <React.StrictMode>
+    <StyleLoader />
     <App />
   </React.StrictMode>
 )
