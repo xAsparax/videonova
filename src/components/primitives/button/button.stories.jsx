@@ -7,14 +7,22 @@ export default {
   component: Button,
   argTypes: {
     label: "Button",
-    onClick: "",
+    onClick: {control: "text"},
+    disabled: { boolean: { action: false } },
+    variant: {
+      options: ["prime", "transparent"],
+      control: { type: "radio" },
+    },
   },
 }
 
 export function ButtonPrimary(args) {
   return <Button {...args} />
 }
+
 ButtonPrimary.args = {
   label: "button label",
-  onClick: "test",
+  variant: "prime",
+  onClick: "https://google.com",
+  disabled: false
 }

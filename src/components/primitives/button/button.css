@@ -21,18 +21,18 @@
   font-weight: 500;
 }
 
-.button:hover {
-  box-shadow: 0px 4px 22px rgba(91, 77, 255, 0.2);
-}
-
 .button_transparent {
   background: none;
-  border: 1px #5B4DFF solid;
+  border: 2px #5B4DFF solid;
   color: #5B4DFF;
   font-weight: 700;
 }
 
-.button_clicked {
+.button:hover {
+  box-shadow: 0px 4px 22px rgba(91, 77, 255, 0.2);
+}
+
+.button:active {
   box-shadow: inset 0px 4px 22px rgba(5, 0, 61, 0.2);
 }
 
@@ -44,3 +44,6 @@
 .button_loading {
   justify-content: space-between;
 }
+
+
+
