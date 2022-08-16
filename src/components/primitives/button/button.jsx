@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Link } from "react-router-dom"
 
-function Button({ label, onClick }) {
+function Button({ label, onClick, variant,  }) {
   return (
     <div>
       <Link to={onClick}>{label}</Link>

@@ -1,0 +1,46 @@
+.button {
+  font-family: 'Plus Jakarta Display', sans-serif;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 44px;
+  width: fit-content;
+  text-decoration: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-size: 16px;
+  padding: 16px 56px;
+  gap: 10px;
+  font-style: normal;
+}
+
+.button_prime {
+  background: #5B4DFF;
+  color: #FFFFFF;
+  font-weight: 500;
+}
+
+.button:hover {
+  box-shadow: 0px 4px 22px rgba(91, 77, 255, 0.2);
+}
+
+.button_transparent {
+  background: none;
+  border: 1px #5B4DFF solid;
+  color: #5B4DFF;
+  font-weight: 700;
+}
+
+.button_clicked {
+  box-shadow: inset 0px 4px 22px rgba(5, 0, 61, 0.2);
+}
+
+.button_disabled {
+  background: rgba(91, 77, 255, 0.6);
+  pointer-events: none;
+}
+
+.button_loading {
+  justify-content: space-between;
+}
