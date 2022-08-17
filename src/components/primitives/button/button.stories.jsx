@@ -7,7 +7,7 @@ export default {
   component: Button,
   argTypes: {
     label: "Button",
-    onClick: {control: "text"},
+    onClick: { control: "text" },
     disabled: { boolean: { action: false } },
     variant: {
       options: ["prime", "transparent"],
@@ -16,13 +16,32 @@ export default {
   },
 }
 
-export function ButtonPrimary(args) {
+function Template(args) {
   return <Button {...args} />
 }
+
+export const ButtonPrimary = Template.bind({})
 
 ButtonPrimary.args = {
   label: "button label",
   variant: "prime",
   onClick: "https://google.com",
-  disabled: false
+  disabled: false,
+}
+
+export const ButtonTransparent = Template.bind({})
+
+ButtonTransparent.args = {
+  label: "button label",
+  variant: "transparent",
+  onClick: "https://google.com",
+  disabled: false,
+}
+
+export const ButtonDisabled = Template.bind({})
+
+ButtonDisabled.args = {
+  label: "button label",
+  variant: "prime",
+  disabled: true,
 }

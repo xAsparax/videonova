@@ -1,28 +1,40 @@
 import React from "react"
 import "./button.css"
 import PropTypes from "prop-types"
-import isInternalLink from "is-internal-link"
-import { Link } from "react-router-dom"
+import LinkVariable from "../linkVariable/linkVariable";
 
-
-export default function Button({ label, onClick, variant, disabled}) {
+export default function Button({ label, onClick, variant, disabled, children, ...props}) {
   const buttonDisabled = disabled ? `button_disabled` : ``
   const className = `button button_${variant} ${buttonDisabled}`
-  let LinkVariable
 
-
-  LinkVariable = () => (isInternalLink(onClick)) ?
-    <Link className={className} to={onClick}>{label}</Link> :
-    <a href={onClick} className={className}>{label}</a>
   return (
-    <LinkVariable/>
+    <LinkVariable
+      className={className}
+      onClick={onClick}
+      {...props}
+    >
+      {children || label}
+    </LinkVariable>
   )
 }
 
 Button.propTypes = {
-  label: PropTypes.string.isRequired,
-  onClick: PropTypes.string.isRequired,
+  /**
+   * Button title
+   */
+  label: PropTypes.string,
+  /** Can be function or text. If text is provided, will render button as link component.
+   * Internal links will be rendered with Link component.
+   */
+  onClick: PropTypes.oneOf([PropTypes.func, PropTypes.string]),
+  /**
+   *Renders one of the button styles: "prime" or "transparent"
+   * default variant is `prime`
+   */
   variant: PropTypes.oneOf(["prime", "transparent"]).isRequired,
+  /**
+   * Disables all button interactions
+   */
   disabled: PropTypes.bool,
 }
 
@@ -30,5 +42,6 @@ Button.defaultProps = {
   label: undefined,
   onClick: undefined,
   variant: "prime",
-  disabled: false
+  disabled: false,
+  children: undefined,
 }
