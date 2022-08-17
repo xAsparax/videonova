@@ -22,6 +22,8 @@ function StyleLoader() {
     // When Font is loaded, add a font-family using Open Sans to the body
     Promise.all(Fonts).then(() => {
       document.body.classList.add("fontLoaded")
+    }).catch(() => {
+      document.body.classList.add("fontError")
     })
   }, [])
   return null
