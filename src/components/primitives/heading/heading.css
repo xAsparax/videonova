@@ -1,0 +1,32 @@
+.heading1 {
+  font-family: 'Chillax';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 50px;
+  line-height: 70px;
+  text-transform: capitalize;
+}
+
+.heading2 {
+  font-family: 'Plus Jakarta Display';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 140%;
+}
+
+.heading3 {
+  font-family: 'Plus Jakarta Display';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 140%;
+}
+
+.heading-black {
+  color: #000000;
+}
+
+.heading-red {
+  color: #FF6363;
+}
