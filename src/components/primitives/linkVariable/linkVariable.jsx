@@ -1,24 +1,28 @@
 import React from "react"
-import isInternalLink from "is-internal-link"
+// import isInternalLink from "is-internal-link"
 import { Link } from "react-router-dom"
 import PropTypes from "prop-types"
+import IsInternalLink from "../isInternalLink/isInternalLink";
 
-const LinkVariable = ({ children, onClick, ...props }) => {
-  if (isInternalLink(onClick)) {
+function LinkVariable ({ children, onClick, ...props }) {
+  if (!onClick) {
+    return <span {...props}>{children}</span>
+  }
+  if (IsInternalLink(onClick)) {
     return (
       <Link to={onClick} {...props}>
         {children}
       </Link>
-    );
+    )
   }
   return (
     <a href={onClick} {...props}>
       {children}
     </a>
-  );
-};
+  )
+}
 
-export default LinkVariable;
+export default LinkVariable
 
 LinkVariable.propTypes = {
   /**
