@@ -7,6 +7,9 @@ export default {
   title: "partials/cardUserInfoCounter",
   component: CardUserInfoCounter,
   argTypes: {
+    counter: {
+      control: { type: 'number', min:0, step: 1 }
+    },
     text: {
       options: ["videos", "likes"],
       control: { type: "radio" },
@@ -22,7 +25,6 @@ export function Likes(args) {
 Likes.args = {
   icon: heart,
   text: "likes",
-  number: 255,
 }
 
 export function Videos(args) {
@@ -32,5 +34,4 @@ export function Videos(args) {
 Videos.args = {
   icon: video,
   text: "videos",
-  number: 12,
 }

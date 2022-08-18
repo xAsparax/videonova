@@ -34,47 +34,20 @@
   justify-content: space-between;
 }
 
-
-
-
-
-.itemCardDetailed__text {
-  font-size: 16px;
-  color: #4A4847;
-  margin-bottom: 16px;
-}
-
-.itemCardDetailed__price {
-  font-size: 16px;
-  color: #4A4847;
-  margin-bottom: 16px;
-  font-weight: bold;
-}
-
-.itemCardDetailed__button {
+.cardUser__button {
   display: flex;
   justify-content: center;
 }
 
 @media screen and (min-width: 768px) {
-  .itemCardDetailed {
-    min-height: 600px;
+  .cardUser {
+    min-height: 395px;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .itemCardDetailed {
-    padding: 32px 21px;
+  .cardUser {
     width: auto;
     height: auto;
-  }
-
-  .itemCardDetailed__image {
-    width: 80%
-  }
-
-  .itemCardDetailed__text,
-  .itemCardDetailed__price {
-    margin-bottom: 8px;
   }
 }

@@ -6,7 +6,6 @@ export default {
   title: "partials/cardUser",
   component: CardUser,
   argTypes: {
-    info: { control: "text" },
     image: { control: "text" },
     title: { control: "text" },
   },
@@ -21,7 +20,6 @@ export function Primary(args) {
 }
 
 Primary.args = {
-  info: "hello",
   image: avatar,
   title: "Anna May",
   buttonLabel: "To profile",
@@ -35,7 +33,7 @@ export function Description() {
       <p> Компонент займає всю ширину контейнеру, в який буде покладений.</p>
       <p>
         {" "}
-        Має мінімальну висоту 600рх (для десктопної версії), та збільшує висоту
+        Має мінімальну висоту 395рх (для десктопної версії), та збільшує висоту
         в залежності від контенту картки.
       </p>
       <p> В мобільній версії висота визначається контентом.</p>
