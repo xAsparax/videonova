@@ -31,5 +31,5 @@ CardUserInfoCounter.PropTypes = {
 }
 
 CardUserInfoCounter.defaultProps = {
-  counter: 0,
+  counter: undefined,
 }
