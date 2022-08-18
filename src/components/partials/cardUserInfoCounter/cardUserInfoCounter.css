@@ -1,0 +1,13 @@
+.cardUserInfoCounter {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.icon_block {
+  margin-right: 8px;
+}
+
+.counter_block {
+  margin-right: 2px;
+}

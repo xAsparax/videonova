@@ -1,6 +1,6 @@
 import React from "react"
-import CardUser from "./cardUser";
-import  avatar from "../../../assets/avatars/anna-may-avatar.jpg"
+import CardUser from "./cardUser"
+import avatar from "../../../assets/avatars/anna-may-avatar.jpg"
 
 export default {
   title: "partials/cardUser",

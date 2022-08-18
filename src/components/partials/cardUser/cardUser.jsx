@@ -4,15 +4,21 @@ import Image from "../../primitives/image/image";
 import Button from "../../primitives/button/button";
 import "./cardUser.css"
 import Heading from "../../primitives/heading/heading";
+import CardUserInfoCounter from "../cardUserInfoCounter/cardUserInfoCounter";
+import videoIcon from "../../../assets/icons/video-square.png"
+import heartIcon from "../../../assets/icons/heart.png"
 
-export default function CardUser({ image, title, info, buttonLabel, buttonLink }) {
+export default function CardUser({ image, title, likesValue, videosValue, buttonLabel, buttonLink }) {
   return (
     <div className="cardUser">
       <div className="cardUser__image">
         <Image src={image} fit="cover" />
       </div>
       <Heading weight="3" className="cardUser__title">{title}</Heading>
-      <div className="cardUser__info">{info}</div>
+      <div className="cardUser__info">
+        <CardUserInfoCounter icon={videoIcon} text="videos" counter={videosValue}/>
+        <CardUserInfoCounter icon={heartIcon} text="likes" counter={likesValue}/>
+      </div>
       <Button
         label={buttonLabel}
         onClick={buttonLink}
@@ -32,9 +38,13 @@ CardUser.propTypes = {
    */
   title: PropTypes.string.isRequired,
   /**
-   *User info
+   *Likes counter
    */
-  info: PropTypes.string.isRequired,
+  likesValue: PropTypes.number,
+  /**
+   *Videos counter
+   */
+  videosValue: PropTypes.number,
   /**
    *Button text
    */
@@ -43,4 +53,9 @@ CardUser.propTypes = {
    * Button link
    */
   buttonLink: PropTypes.string.isRequired,
+}
+
+CardUser.defaultProps = {
+  videosValue: undefined,
+  likesValue: undefined
 }
