@@ -1,0 +1,19 @@
+.textField{
+  display: flex;
+  flex-direction: column;
+}
+
+.textField__title {
+  margin-bottom: 19px;
+}
+
+.textField__form {
+  background-color: #E9EEF8;
+  width: 100%;
+  height: 134px;
+  padding: 24px;
+  box-sizing: border-box;
+  border-radius: 14px;
+  font-size: 16px;
+  color: #939393;
+}
