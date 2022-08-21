@@ -14,5 +14,5 @@ export function Primary(args) {
 }
 
 Primary.args = {
-  text: "All rights reserved 2022"
+  text: "All Rights Reserved 2022"
 }
