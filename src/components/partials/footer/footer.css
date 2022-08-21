@@ -1,0 +1,24 @@
+.footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #232323;
+  height: 136px;
+  padding: 50px;
+}
+
+.footer_logo {
+
+}
+
+.footer_text {
+  font-size: 22px;
+  font-family: "Mazzard", sans-serif;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.footer_social {
+  height: 30px;
+  width: 30px;
+}
