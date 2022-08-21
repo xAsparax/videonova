@@ -1,5 +1,5 @@
 import React from "react"
-import InputField from "./inputField"
+import InputField from "./inputField.jsx"
 
 export default {
   title: "partials/inputField",
