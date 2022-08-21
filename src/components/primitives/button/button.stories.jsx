@@ -13,6 +13,7 @@ export default {
       options: ["prime", "transparent"],
       control: { type: "radio" },
     },
+    loading: { boolean: { action: false } },
   },
 }
 
@@ -20,28 +21,33 @@ function Template(args) {
   return <Button {...args} />
 }
 
-export const ButtonPrimary = Template.bind({})
+export const Primary = Template.bind({})
 
-ButtonPrimary.args = {
+Primary.args = {
   label: "button label",
   variant: "prime",
-  onClick: "https://google.com",
+  onClick: "https://youtube.com",
   disabled: false,
+  loading: false,
 }
 
 export const ButtonTransparent = Template.bind({})
 
 ButtonTransparent.args = {
-  label: "button label",
+  ...Primary.args,
   variant: "transparent",
-  onClick: "https://google.com",
-  disabled: false,
 }
 
 export const ButtonDisabled = Template.bind({})
 
 ButtonDisabled.args = {
-  label: "button label",
-  variant: "prime",
+  ...Primary.args,
   disabled: true,
+}
+
+export const ButtonLoading = Template.bind({})
+
+ButtonLoading.args = {
+  ...Primary.args,
+  loading: true,
 }

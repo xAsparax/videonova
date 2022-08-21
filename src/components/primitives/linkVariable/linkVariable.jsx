@@ -1,22 +1,33 @@
 import React from "react"
-// import isInternalLink from "is-internal-link"
 import { Link } from "react-router-dom"
 import PropTypes from "prop-types"
-import IsInternalLink from "../isInternalLink/isInternalLink";
+import IsInternalLink from "../isInternalLink/isInternalLink"
 
-function LinkVariable ({ children, onClick, ...props }) {
-  if (!onClick) {
+function LinkVariable ({ children, action, ...props }) {
+
+  if (!action) {
     return <span {...props}>{children}</span>
   }
-  if (IsInternalLink(onClick)) {
+
+  if (typeof action === "function") {
     return (
-      <Link to={onClick} {...props}>
+      // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+      <span role="button" tabIndex="0" onClick={action} {...props}>
+        {children}
+      </span>
+    )
+  }
+
+  if (IsInternalLink(action) && typeof action === "string") {
+    return (
+      <Link to={action} {...props}>
         {children}
       </Link>
     )
   }
+
   return (
-    <a href={onClick} {...props}>
+    <a href={action} {...props}>
       {children}
     </a>
   )
@@ -34,9 +45,9 @@ LinkVariable.propTypes = {
     PropTypes.node,
   ]).isRequired,
 
-  onClick: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+  action: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 }
 
 LinkVariable.defaultProps = {
-  onClick: undefined,
+  action: undefined,
 }
