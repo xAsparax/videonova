@@ -6,6 +6,7 @@ import "./assets/css/index.css"
 import FontFaceObserver from "fontfaceobserver"
 import "./assets/fonts/chillax/css/font.css"
 import "./assets/fonts/plus-jakarta-display/css/font.css"
+import "./assets/fonts/mazzard/font.css"
 
 function StyleLoader() {
   useEffect(() => {
@@ -17,6 +18,8 @@ function StyleLoader() {
 
       // font for headings
       new FontFaceObserver("Chillax", { weight: 600 }),
+
+      new FontFaceObserver("Mazzard", {weight: 500})
     ]
 
     // When Font is loaded, add a font-family using Open Sans to the body
