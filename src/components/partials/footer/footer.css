@@ -1,15 +1,10 @@
 .footer {
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   background-color: #232323;
   height: 136px;
   padding: 50px;
-}
-
-.footer_logo {
-
 }
 
 .footer_text {
@@ -19,6 +14,17 @@
 }
 
 .footer_social {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.icons {
+  display: flex;
+  gap: 43px;
+}
+
+.icons img {
   height: 30px;
   width: 30px;
 }
