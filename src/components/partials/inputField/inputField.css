@@ -18,3 +18,8 @@
   color: #939393;
 }
 
+input {
+  border:none;
+  outline: none;
+}
+
