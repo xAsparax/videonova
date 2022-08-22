@@ -1,12 +1,12 @@
 import React from "react"
-import Footer from "./footer.jsx"
+import Footer from "./footer"
 
 export default {
   title: "partials/footer",
   component: Footer,
-  argTypes:{
-    text: {control: "text"},
-  }
+  argTypes: {
+    text: { control: "text" },
+  },
 }
 
 export function Primary(args) {
@@ -14,5 +14,5 @@ export function Primary(args) {
 }
 
 Primary.args = {
-  text: "All Rights Reserved 2022"
+  text: "All Rights Reserved 2022",
 }

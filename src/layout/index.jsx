@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import Header from "../components/partials/header"
+import Footer from "../components/partials/footer/footer";
 import "./style.css"
 
 function Layout({ children }) {
@@ -10,6 +11,9 @@ function Layout({ children }) {
         <Header />
       </div>
       <div className="layout__content">{children}</div>
+      <div className="siteContent__footer">
+        <Footer text="All Rights Reserved 2022"/>
+      </div>
     </div>
   )
 }
