@@ -5,15 +5,19 @@ export default {
   title: "partials/AddContentForm",
   component: AddContentForm,
   argTypes: {
-    onClick: {control: "text"}
-  }
+    onClick: { control: "text" },
+  },
 }
 
 export function Primary(args) {
-  return <div style={{ width: "644px", height: "861px" }}> <AddContentForm {...args} /> </div>
-
+  return (
+    <div style={{ width: "644px", height: "861px" }}>
+      {" "}
+      <AddContentForm {...args} />{" "}
+    </div>
+  )
 }
 
-Primary.args={
-  onClick: "youtube.com"
+Primary.args = {
+  onClick: "youtube.com",
 }

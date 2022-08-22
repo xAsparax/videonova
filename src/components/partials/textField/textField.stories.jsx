@@ -1,5 +1,5 @@
 import React from "react"
-import TextField from "./textField.jsx"
+import TextField from "./textField"
 
 export default {
   title: "partials/textField",

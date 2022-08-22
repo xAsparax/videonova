@@ -8,7 +8,7 @@ export default {
   component: CardUserInfoCounter,
   argTypes: {
     counter: {
-      control: { type: 'number', min:0, step: 1 }
+      control: { type: "number", min: 0, step: 1 },
     },
     text: {
       options: ["videos", "likes"],

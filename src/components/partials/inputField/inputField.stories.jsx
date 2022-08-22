@@ -1,5 +1,5 @@
 import React from "react"
-import InputField from "./inputField.jsx"
+import InputField from "./inputField"
 
 export default {
   title: "partials/inputField",
@@ -7,7 +7,7 @@ export default {
   argTypes: {
     title: { control: "text" },
     placeholder: { control: "text" },
-    isHidden:  { control: 'boolean' },
+    isHidden: { control: "boolean" },
   },
 }
 

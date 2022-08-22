@@ -19,7 +19,7 @@ function StyleLoader() {
       // font for headings
       new FontFaceObserver("Chillax", { weight: 600 }),
 
-      new FontFaceObserver("Mazzard", {weight: 500})
+      new FontFaceObserver("Mazzard", { weight: 500 }),
     ]
 
     // When Font is loaded, add a font-family using Open Sans to the body
