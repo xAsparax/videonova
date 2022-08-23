@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
-import Header from "../components/partials/header"
-import Footer from "../components/partials/footer/footer";
+import Header from "../components/partials/header/header"
+import Footer from "../components/partials/footer/footer"
 import "./style.css"
 
 function Layout({ children }) {
