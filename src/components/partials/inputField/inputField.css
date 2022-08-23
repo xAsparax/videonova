@@ -4,6 +4,9 @@
 }
 
 .inputField__title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 19px;
 }
 
@@ -16,10 +19,10 @@
   border-radius: 14px;
   font-size: 16px;
   color: #939393;
-}
-
-input {
   border:none;
   outline: none;
 }
 
+.form_error {
+  outline: 2px solid red;
+}
