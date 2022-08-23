@@ -1,0 +1,20 @@
+.videoCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.videoCard_videoContainer {
+  height: 178px;
+  width: 314px;
+  border-radius: 14px;
+  margin-bottom: 10px;
+}
+
+.videoCard_text {
+  color: #5B5B5B;
+  font-size: 16px;
+  text-align: center;
+  padding: 5px 41px 0;
+}
