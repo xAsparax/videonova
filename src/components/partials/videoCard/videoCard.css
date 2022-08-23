@@ -1,7 +1,6 @@
 .videoCard {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 
@@ -9,7 +8,11 @@
   height: 178px;
   width: 314px;
   border-radius: 14px;
-  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.videoCard_title {
+  margin-top: 10px;
 }
 
 .videoCard_text {

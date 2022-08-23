@@ -2,14 +2,14 @@ import React from "react"
 import "./videoCard.css"
 import Heading from "../../primitives/heading/heading"
 import PropTypes from "prop-types"
-import Image from "../../primitives/image/image"
+import ReactPlayer from "react-player"
 
 export default function VideoCard ({video, title, text}) {
 
   return (
     <div className="videoCard">
       <div className="videoCard_videoContainer">
-        <Image src={video} fit="cover"/>
+        <ReactPlayer url={video} width="314px" height="178px"/>
       </div>
       <div className="videoCard_title">
         <Heading weight="3">{title}</Heading>
@@ -17,7 +17,6 @@ export default function VideoCard ({video, title, text}) {
       <div className="videoCard_text">
         {text}
       </div>
-      
     </div>
   )
 }
