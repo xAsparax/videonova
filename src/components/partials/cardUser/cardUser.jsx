@@ -14,7 +14,9 @@ export default function CardUser({ image, title, likesValue, videosValue, button
       <div className="cardUser__image">
         <Image src={image} fit="cover" />
       </div>
-      <Heading weight="3" className="cardUser__title">{title}</Heading>
+      <div  className="cardUser__title">
+        <Heading weight="3">{title}</Heading>
+      </div>
       <div className="cardUser__info">
         <CardUserInfoCounter icon={videoIcon} text="videos" counter={videosValue}/>
         <CardUserInfoCounter icon={heartIcon} text="likes" counter={likesValue}/>

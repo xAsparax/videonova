@@ -7,7 +7,9 @@ export default function InputField({title, placeholder, inputValue, isHidden }) 
 
   return (
     <div className="inputField">
-      <Heading className="inputField__title" weight="3">{title}</Heading>
+      <div className="inputField__title">
+        <Heading weight="3">{title}</Heading>
+      </div>
       <input className="inputField__form" type="text" value={inputValue} placeholder={placeholder}/>
     </div>
   )

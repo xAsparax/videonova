@@ -22,8 +22,12 @@ function HomePage() {
   return (
     <Layout>
         <div className="introducing_block">
-          <Heading className="heading__elem" weight="1">Welcome to <mark className="red">VideoNova</mark></Heading>
-          <span className="text__elem">Create videos with a single click. Add subtitles, transcribe audio and more.</span>
+          <div  className="heading__elem">
+            <Heading weight="1">Welcome to <mark className="red">VideoNova</mark></Heading>
+          </div>
+          <div  className="text__elem">
+           <span>Create videos with a single click. Add subtitles, transcribe audio and more.</span>
+          </div>
           <div className="button__elem">
           <Button variant="prime" label="Start Now" onClick="/" />
           </div>

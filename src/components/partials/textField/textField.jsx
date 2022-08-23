@@ -7,7 +7,9 @@ export default function TextField({title, placeholder, inputValue }) {
 
   return (
     <div className="textField">
-      <Heading className="textField__title" weight="3">{title}</Heading>
+      <div className="textField__title">
+        <Heading weight="3">{title}</Heading>
+      </div>
       <textarea className="textField__form" rows="30" placeholder={placeholder}>{inputValue}</textarea>
     </div>
   )
