@@ -1,14 +1,16 @@
 .signUpForm {
   display: flex;
   flex-direction: column;
-  padding: 90px;
+  padding: 40px 90px;
   background-color: #FFFFFF;
   border-radius: 20px;
-  gap: 30px;
+  gap: 20px;
 }
 
 .closeWindowPic {
   align-self: flex-end;
+  cursor: pointer;
+  margin-right: -50px;
 }
 
 .closeWindowPic img {
@@ -18,6 +20,7 @@
 
 .signUpForm__heading {
   text-align: center;
+  margin-top: -20px;
 }
 
 mark.red {

@@ -5,7 +5,7 @@ export default {
   title: "partials/SignUpForm",
   component: SignUpForm,
   argTypes: {
-    onClick: { control: "text" },
+    show: { control: "boolean" },
   },
 }
 
@@ -18,5 +18,5 @@ export function Primary(args) {
 }
 
 Primary.args = {
-  onClick: "youtube.com",
+  show: true,
 }
