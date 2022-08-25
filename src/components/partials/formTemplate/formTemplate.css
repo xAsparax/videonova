@@ -1,0 +1,48 @@
+.formTemplate {
+  display: flex;
+  flex-direction: column;
+  padding: 50px 90px 70px;
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  gap: 50px;
+  align-items: center;
+}
+
+.closeWindowPic {
+  align-self: flex-end;
+  cursor: pointer;
+  margin-right: -50px;
+  margin-top: -10px;
+}
+
+.closeWindowPic img {
+  height: 15px;
+  width: 15px;
+}
+
+.formTemplate_content {
+  display: flex;
+}
+.formTemplate_submit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formTemplate__buttonBlock {
+  margin: 0px auto 40px;
+}
+
+.formTemplate__notification {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.link-style {
+  color: #5B4DFF;
+  text-decoration: none;
+  font-weight: 700;
+  margin-left: 10px;
+  cursor: pointer;
+}

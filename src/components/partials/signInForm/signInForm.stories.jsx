@@ -5,7 +5,6 @@ export default {
   title: "partials/SignInForm",
   component: SignInForm,
   argTypes: {
-    show: { control: "boolean" },
     error: { boolean: { action: false } },
   },
 }
@@ -19,7 +18,7 @@ export function Primary(args) {
 }
 
 Primary.args = {
-  show: true,
+  error: false,
 }
 
 export function Error(args) {
@@ -31,6 +30,5 @@ export function Error(args) {
 }
 
 Error.args = {
-  show: true,
   error: true,
 }
