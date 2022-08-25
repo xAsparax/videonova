@@ -7,7 +7,7 @@ import logo from "../../../assets/logo/logo-blue.png"
 import Image from "../../primitives/image/image"
 import Button from "../../primitives/button/button"
 import PropTypes from "prop-types"
-import SignUpForm from "../signUpForm/signUpForm";
+import SignFormTemplate from "../signFormTemplate/signFormTemplate"
 
 function Header({isAuthorized}) {
   const [show, setShow] = useState(false)
@@ -31,7 +31,7 @@ function Header({isAuthorized}) {
           <Button variant="transparent" label="Sign Up" onClick={() => setShow(true) } />
         }
       </div>
-        <SignUpForm onClose={() => setShow(false)} show={show} />
+        <SignFormTemplate isSignUpForm="true" onClose={() => setShow(false)} show={show} />
     </div>
   )
 }

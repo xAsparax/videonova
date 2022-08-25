@@ -1,9 +1,9 @@
 import React from "react"
-import FormTemplate from "./formTemplate"
+import SignFormTemplate from "./signFormTemplate"
 
 export default {
   title: "partials/FormTemplate",
-  component: FormTemplate,
+  component: SignFormTemplate,
   argTypes: {
     show: {control: "boolean"},
     isSignUpForm: {control: "boolean"},
@@ -11,7 +11,7 @@ export default {
 }
 
 export function SignUpForm(args) {
-  return <FormTemplate {...args} />
+  return <SignFormTemplate {...args} />
 }
 
 SignUpForm.args = {
@@ -20,7 +20,7 @@ SignUpForm.args = {
 }
 
 export function SignInForm(args) {
-  return <FormTemplate {...args} />
+  return <SignFormTemplate {...args} />
 }
 
 SignInForm.args = {

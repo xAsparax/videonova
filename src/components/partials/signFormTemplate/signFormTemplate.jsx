@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import "./formTemplate.css"
+import "./signFormTemplate.css"
 import SignInForm from "../signInForm/signInForm"
 import SignUpForm from "../signUpForm/signUpForm"
 import Image from "../../primitives/image/image"
@@ -8,7 +8,7 @@ import Button from "../../primitives/button/button"
 import Modal from "../modal/modal"
 import PropTypes from "prop-types"
 
-export default function FormTemplate({ show, onSubmit, onClose, isSignUpForm }) {
+export default function SignFormTemplate({ show, onSubmit, onClose, isSignUpForm }) {
 
   const [isSignUp, setIsSignUp] = useState(isSignUpForm)
 
@@ -37,7 +37,7 @@ export default function FormTemplate({ show, onSubmit, onClose, isSignUpForm }) 
   )
 }
 
-FormTemplate.propTypes={
+SignFormTemplate.propTypes={
   show: PropTypes.bool,
   onSubmit: PropTypes.func,
   onClose: PropTypes.func,

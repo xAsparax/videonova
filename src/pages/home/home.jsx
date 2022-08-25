@@ -10,7 +10,7 @@ import Button from "../../components/primitives/button/button"
 import "./home.css"
 import Image from "../../components/primitives/image/image"
 import star from "../../assets/icons/ranking.png"
-import SignInForm from "../../components/partials/signInForm/signInForm"
+import SignFormTemplate from "../../components/partials/signFormTemplate/signFormTemplate"
 
 function HomePage() {
   const [show, setShow] = useState(false)
@@ -49,7 +49,7 @@ function HomePage() {
               </div>))}
           </div>
         </div>
-        <SignInForm onClose={() => setShow(false)} show={show} />
+        <SignFormTemplate isSignUp="false" onClose={() => setShow(false)} show={show}/>
     </Layout>
   )
 }
