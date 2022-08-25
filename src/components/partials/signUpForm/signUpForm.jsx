@@ -21,9 +21,9 @@ export default function SignUpForm({show, onSubmit, onClose}) {
           <Heading weight="1" color="black">Sign <mark className="red">Up</mark></Heading>
         </div>
 
-        <InputField title="Name" placeholder="Type name..."/>
-        <InputField title="Password" placeholder="Type password..."/>
-        <InputField title="Repeat Password" placeholder="Repeat password..."/>
+        <InputField title="Name" placeholder="Type name..." />
+        <InputField title="Password" placeholder="Type password..." />
+        <InputField title="Repeat Password" placeholder="Repeat password..." />
 
         <div className="signUpForm__buttonBlock">
           <Button variant="prime" onClick={onSubmit}>Sign Up</Button>

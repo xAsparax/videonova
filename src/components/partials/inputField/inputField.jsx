@@ -1,11 +1,20 @@
 import React from "react"
+import { useState } from "react"
 import "./inputField.css"
-import PropTypes from "prop-types";
-import Heading from "../../primitives/heading/heading";
-import {Link} from "react-router-dom";
+import PropTypes from "prop-types"
+import Heading from "../../primitives/heading/heading"
+import {Link} from "react-router-dom"
+import Image from "../../primitives/image/image"
+import eye from "../../../assets/icons/eye.png"
+import eyeClosed from "../../../assets/icons/eye-closed.png"
 
-export default function InputField({title, placeholder, inputValue, isHidden, error, helpLabel, helpLink }) {
+export default function InputField({title, placeholder, inputValue, error, password, helpLabel, helpLink }) {
   const className = `inputField__form ${error ? `form_error` : ``}`
+  const [passwordShown, setPasswordShown] = useState(false)
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown)
+  }
+  const inputType = passwordShown ? "text" : "password"
 
   return (
     <div className="inputField">
@@ -13,7 +22,14 @@ export default function InputField({title, placeholder, inputValue, isHidden, er
         <Heading weight="3">{title}</Heading>
         { error ? <Link className="link-style" to={helpLink}>{helpLabel}</Link> : ``}
       </div>
-      <input className={className} type="text" value={inputValue} placeholder={placeholder}/>
+      <div className="password_form">
+        <input className={className} type={password ? inputType : "text"} value={inputValue} placeholder={placeholder}/>
+        { password ?
+          <div className="eye-icon" onClick={togglePassword}>
+            <Image src={passwordShown ? eyeClosed : eye} fit="contain"/>
+          </div> : ``
+        }
+      </div>
     </div>
   )
 }
@@ -32,9 +48,9 @@ InputField.propTypes = {
    */
   inputValue: PropTypes.string,
   /**
-   * Hidden icon
+   * Sets input form in password mode. If not set generates text type of input
    */
-  isHidden: PropTypes.bool,
+  password: PropTypes.bool,
   /**
    * Error message renders
    */
@@ -46,15 +62,15 @@ InputField.propTypes = {
   /**
    * Link to help source
    */
-  helpLink: PropTypes.string
+  helpLink: PropTypes.string,
 }
 
 InputField.defaultProps = {
   title: undefined,
   placeholder: undefined,
   inputValue: undefined,
-  isHidden: false,
+  password: false,
   error:false,
-  helpLabel: undefined,
-  helpLink: undefined
+  helpLabel: "Need help?",
+  helpLink: "/"
 }

@@ -26,3 +26,22 @@
 .form_error {
   outline: 2px solid red;
 }
+
+.password_form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  position:relative;
+}
+
+.eye-icon {
+  cursor: pointer;
+  position: absolute;
+  right: 30px;
+}
+
+.eye-icon img {
+  height: 30px;
+  width: 30px;
+}
