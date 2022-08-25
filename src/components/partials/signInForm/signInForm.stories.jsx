@@ -5,7 +5,7 @@ export default {
   title: "partials/SignInForm",
   component: SignInForm,
   argTypes: {
-    onClick: { control: "text" },
+    show: { control: "boolean" },
     error: { boolean: { action: false } },
   },
 }
@@ -19,7 +19,7 @@ export function Primary(args) {
 }
 
 Primary.args = {
-  onClick: "youtube.com",
+  show: true,
 }
 
 export function Error(args) {
@@ -31,6 +31,6 @@ export function Error(args) {
 }
 
 Error.args = {
-  onClick: "youtube.com",
-  error: true
+  show: true,
+  error: true,
 }

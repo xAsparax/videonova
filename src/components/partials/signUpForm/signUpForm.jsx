@@ -17,13 +17,14 @@ export default function SignUpForm({show, onSubmit, onClose}) {
         <div className="closeWindowPic" onClick={onClose}>
           <Image src={closePic} fit="contain"/>
         </div>
+
         <div className="signUpForm__heading">
           <Heading weight="1" color="black">Sign <mark className="red">Up</mark></Heading>
         </div>
 
         <InputField title="Name" placeholder="Type name..." />
-        <InputField title="Password" placeholder="Type password..." />
-        <InputField title="Repeat Password" placeholder="Repeat password..." />
+        <InputField title="Password" placeholder="Type password..." password="true"/>
+        <InputField title="Repeat Password" placeholder="Repeat password..." password="true" />
 
         <div className="signUpForm__buttonBlock">
           <Button variant="prime" onClick={onSubmit}>Sign Up</Button>

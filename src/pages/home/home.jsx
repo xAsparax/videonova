@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState} from "react"
 import Layout from "../../layout"
 import CardUser from "../../components/partials/cardUser/cardUser"
 import annaMay from "../../assets/avatars/anna-may-avatar.jpg"
@@ -10,8 +10,11 @@ import Button from "../../components/primitives/button/button"
 import "./home.css"
 import Image from "../../components/primitives/image/image"
 import star from "../../assets/icons/ranking.png"
+import SignInForm from "../../components/partials/signInForm/signInForm"
 
 function HomePage() {
+  const [show, setShow] = useState(false)
+
   const userCardInfo = [
     {title: "Anna May", image: annaMay, buttonLink: "/", buttonLabel: "To profile", likesValue: 225, videosValue: 12},
     {title: "Den Bennet", image: denBennet, buttonLink: "/", buttonLabel: "To profile", likesValue: 120, videosValue: 27},
@@ -29,7 +32,7 @@ function HomePage() {
            <span>Create videos with a single click. Add subtitles, transcribe audio and more.</span>
           </div>
           <div className="button__elem">
-          <Button variant="prime" label="Start Now" onClick="/" />
+          <Button variant="prime" label="Start Now" onClick={() => setShow(true)}/>
           </div>
         </div>
         <div className="creators_block">
@@ -46,6 +49,7 @@ function HomePage() {
               </div>))}
           </div>
         </div>
+        <SignInForm onClose={() => setShow(false)} show={show} />
     </Layout>
   )
 }
