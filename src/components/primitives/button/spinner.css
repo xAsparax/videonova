@@ -8,6 +8,14 @@
   animation: spinner-d3wgkg 1s infinite linear;
 }
 
+.spinner_big {
+  width: 50px;
+  height: 50px;
+  border: 12px solid;
+  border-color: #ffffff;
+  border-right-color: transparent;
+}
+
 @keyframes spinner-d3wgkg {
   to {
     transform: rotate(1turn);
