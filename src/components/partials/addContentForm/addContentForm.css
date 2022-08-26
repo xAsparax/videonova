@@ -1,26 +1,17 @@
 .addContentForm {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 90px;
   background-color: #FFFFFF;
   border-radius: 20px;
-  gap: 30px;
+  gap: 20px;
 }
 
 .addContentForm__heading {
   text-align: center;
-  margin-bottom: -8px;
 }
 
 mark.red {
   color: #FF6363;
   background: none;
-}
-
-.addContentForm__buttonBlock {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 20px;
 }

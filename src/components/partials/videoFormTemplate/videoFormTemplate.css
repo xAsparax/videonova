@@ -1,0 +1,33 @@
+.videoFormTemplate {
+  display: flex;
+  flex-direction: column;
+  padding: 50px 90px 70px;
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  gap: 30px;
+  align-items: center;
+}
+
+.closeWindowPic {
+  align-self: flex-end;
+  cursor: pointer;
+  margin-right: -50px;
+  margin-top: -10px;
+}
+
+.closeWindowPic img {
+  height: 15px;
+  width: 15px;
+}
+
+.videoFormTemplate_content {
+  display: flex;
+  min-width: 464px;
+  margin-bottom: 20px;
+}
+.videoFormTemplate_submit {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}

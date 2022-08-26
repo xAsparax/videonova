@@ -2,7 +2,7 @@ import React from "react"
 import SignFormTemplate from "./signFormTemplate"
 
 export default {
-  title: "partials/FormTemplate",
+  title: "partials/SignFormTemplate",
   component: SignFormTemplate,
   argTypes: {
     show: {control: "boolean"},
