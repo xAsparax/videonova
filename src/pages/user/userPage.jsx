@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 import { useParams } from "react-router-dom"
 import { useSelector } from "react-redux"
 import Layout from "../../layout"
@@ -8,12 +8,16 @@ import Button from "../../components/primitives/button/button"
 import Heading from "../../components/primitives/heading/heading"
 import Image from "../../components/primitives/image/image"
 import videoIcon from "../../assets/icons/video-square-black.png"
-import "./userPage.css"
 import avatar from "../../assets/avatars/anna-may-avatar.jpg"
+import "./userPage.css"
+import VideoFormTemplate from "../../components/partials/videoFormTemplate/videoFormTemplate"
 
 function UserPage({userImage, userName}) {
   const siteInfo = useSelector((store) => store.siteInfo)
   const user = useParams()
+
+  const [show, setShow] = useState(false)
+
   const userVideoInfo = [
     {title: "R.E.M.", text: "ÜBerlin (Official Music Video)", video: "https://www.youtube.com/watch?v=ZITh-XIikgI"},
     {title: "Placebo", text: "Running Up That Hill (A Deal With God) (Cover) Official Music Video", video: "https://www.youtube.com/watch?v=d-mYX0qKkB8"},
@@ -42,7 +46,7 @@ function UserPage({userImage, userName}) {
               <Image src={videoIcon}/>
            </div>
           </div>
-          <Button variant="prime" label="Add video" onClick="/"/>
+          <Button variant="prime" label="Add video" onClick={() => setShow(true)}/>
         </div>
         <div className="userVideo_list">
           {userVideoInfo.map((value) => (
@@ -51,6 +55,7 @@ function UserPage({userImage, userName}) {
             </div>))}
         </div>
       </div>
+      <VideoFormTemplate isVideoForm="false" onClose={() => setShow(false)} show={show}/>
     </Layout>
   )
 }

@@ -6,8 +6,9 @@ import closePic from "../../../assets/icons/close pic.png"
 import Button from "../../primitives/button/button"
 import Modal from "../modal/modal"
 import PropTypes from "prop-types"
+import AddVideoBlock from "../addVideoBlock/addVideoBlock"
 
-export default function VideoFormTemplate({show, onClose, onSubmit, }) {
+export default function VideoFormTemplate({show, onClose, onSubmit, isVideoForm, isLoading, children}) {
 
   return (
     <Modal show={show}>
@@ -16,13 +17,22 @@ export default function VideoFormTemplate({show, onClose, onSubmit, }) {
           <Image src={closePic} fit="contain"/>
         </div>
         <div className="videoFormTemplate_content">
-          <AddContentForm />
+          {
+            isVideoForm ? <AddContentForm /> : <AddVideoBlock />
+          }
         </div>
         <div className="videoFormTemplate_submit">
-          <Button label="Cancel" variant="transparent"/>
+          <Button label="Cancel" variant="transparent" onClick={onClose}/>
           <Button label="Submit" variant="prime" onClick={onSubmit}/>
         </div>
       </div>
     </Modal>
   )
+}
+
+VideoFormTemplate.propTypes={
+  show: PropTypes.bool,
+  onSubmit: PropTypes.func,
+  onClose: PropTypes.func,
+  isVideoForm: PropTypes.bool
 }

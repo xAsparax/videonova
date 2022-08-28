@@ -9,7 +9,7 @@ export default function VideoCard ({video, title, text}) {
   return (
     <div className="videoCard">
       <div className="videoCard_videoContainer">
-        <ReactPlayer url={video} width="314px" height="178px"/>
+        <ReactPlayer url={video} width="314px" height="178px" light={true} controls={true}/>
       </div>
       <div className="videoCard_title">
         <Heading weight="3">{title}</Heading>

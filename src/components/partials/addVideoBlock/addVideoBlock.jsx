@@ -7,7 +7,6 @@ import bg from "../../../assets/backgrounds/bg.jpg"
 import mark from "../../../assets/icons/mark.png"
 import PropTypes from "prop-types"
 
-
 export default function AddVideoBlock({loading}) {
 
   return (
