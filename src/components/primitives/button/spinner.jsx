@@ -2,9 +2,9 @@ import React from "react"
 import "./spinner.css"
 import PropTypes from "prop-types"
 
-export default function Spinner(big) {
-  const className = `spinner ${ big ? `spinner_big` : ``}`
-  return <div className={className}> </div>
+export default function Spinner({big}) {
+  const spinnerSize = `spinner ${ big ? `spinner-big` : ``}`
+  return <div className={spinnerSize}> </div>
 }
 
 Spinner.propTypes = {
