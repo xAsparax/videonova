@@ -8,13 +8,14 @@ import Image from "../../primitives/image/image"
 import eye from "../../../assets/icons/eye.png"
 import eyeClosed from "../../../assets/icons/eye-closed.png"
 
-export default function InputField({title, placeholder, inputValue, error, password, helpLabel, helpLink }) {
+export default function InputField({title, placeholder, error, password, helpLabel, helpLink }) {
   const className = `inputField__form ${error ? `form_error` : ``}`
   const [passwordShown, setPasswordShown] = useState(false)
   const togglePassword = () => {
     setPasswordShown(!passwordShown)
   }
   const inputType = passwordShown ? "text" : "password"
+  const [value, setValue] = useState("")
 
   return (
     <div className="inputField">
@@ -23,7 +24,7 @@ export default function InputField({title, placeholder, inputValue, error, passw
         { error ? <Link className="link-style" to={helpLink}>{helpLabel}</Link> : ``}
       </div>
       <div className="password_form">
-        <input className={className} type={password ? inputType : "text"} value={inputValue} placeholder={placeholder}/>
+        <input className={className} type={password ? inputType : "text"} value={value} onChange={(e)=>{setValue(e.target.value)}} placeholder={placeholder}/>
         { password ?
           <div className="eye-icon" onClick={togglePassword}>
             <Image src={passwordShown ? eyeClosed : eye} fit="contain"/>
@@ -46,7 +47,7 @@ InputField.propTypes = {
   /**
    *Information entered by the user
    */
-  inputValue: PropTypes.string,
+  value: PropTypes.string,
   /**
    * Sets input form in password mode. If not set generates text type of input
    */
@@ -68,7 +69,6 @@ InputField.propTypes = {
 InputField.defaultProps = {
   title: undefined,
   placeholder: undefined,
-  inputValue: undefined,
   password: false,
   error:false,
   helpLabel: "Need help?",

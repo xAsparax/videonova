@@ -12,11 +12,14 @@ import avatar from "../../assets/avatars/anna-may-avatar.jpg"
 import "./userPage.css"
 import VideoFormTemplate from "../../components/partials/videoFormTemplate/videoFormTemplate"
 
-function UserPage({userImage, userName}) {
-  const siteInfo = useSelector((store) => store.siteInfo)
-  const user = useParams()
+function UserPage() {
+  // const siteInfo = useSelector((store) => store.siteInfo)
+  // const user = useParams()
 
   const [show, setShow] = useState(false)
+
+  const userInfo =
+    {userName: "Anna May", userImage: avatar}
 
   const userVideoInfo = [
     {title: "R.E.M.", text: "ÜBerlin (Official Music Video)", video: "https://www.youtube.com/watch?v=ZITh-XIikgI"},
@@ -36,12 +39,12 @@ function UserPage({userImage, userName}) {
       {/*  message from store: {siteInfo.test}*/}
       {/*</div>*/}
       <div className="userInfo">
-        <UserProfilePreview image={avatar} name="Anna May" />
+        <UserProfilePreview image={userInfo.userImage} name={userInfo.userName} />
       </div>
       <div className="userVideo">
         <div className="userVideo_head">
           <div className="userVideo_title">
-            <Heading weight="2"> Anna May`s videos</Heading>
+            <Heading weight="2"> {userInfo.userName}`s videos</Heading>
            <div className="video_icon">
               <Image src={videoIcon}/>
            </div>
