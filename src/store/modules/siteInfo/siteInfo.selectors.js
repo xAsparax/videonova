@@ -1,7 +1,18 @@
-export const rootSelector = (state) => state
+import { createSelector } from "@reduxjs/toolkit"
 
-export const selectSiteIntro = (state) => state.siteInfo.siteIntro
+export const rootSelector = (state) => state.user
 
-export const selectFooterText = (state) => state.siteInfo.footerText
+export const selectSiteIntro = createSelector(
+  [rootSelector],
+  ({ siteIntro }) => siteIntro
+)
 
-export const selectSocial = (state) => state.siteInfo.social
+export const selectFooterText = createSelector(
+  [rootSelector],
+  ({ footerText }) => footerText
+)
+
+export const selectSocial = createSelector(
+  [rootSelector],
+  ({ social }) => social
+)

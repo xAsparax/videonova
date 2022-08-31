@@ -11,8 +11,11 @@ import "./home.css"
 import Image from "../../components/primitives/image/image"
 import star from "../../assets/icons/ranking.png"
 import SignFormTemplate from "../../components/partials/signFormTemplate/signFormTemplate"
+import useHomePageInfo from "./useHomePage"
 
 function HomePage() {
+
+  const { siteIntro } = useHomePageInfo()
   const [show, setShow] = useState(false)
 
   const userCardInfo = [
@@ -29,7 +32,7 @@ function HomePage() {
             <Heading weight="1">Welcome to <mark className="red">VideoNova</mark></Heading>
           </div>
           <div  className="text__elem">
-           <span>Create videos with a single click. Add subtitles, transcribe audio and more.</span>
+           <span>{ siteIntro }</span>
           </div>
           <div className="button__elem">
           <Button variant="prime" label="Start Now" onClick={() => setShow(true)}/>
