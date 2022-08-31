@@ -1,19 +1,17 @@
 import React from "react"
 import "./footer.css"
+import { useSelector } from "react-redux"
+import { selectFooterText, selectSocial } from "../../../store/modules/siteInfo"
 import logoWhite from "../../../assets/logo/logo-white.png"
-import PropTypes from "prop-types"
-import telegram from "../../../assets/social/telegram.png"
-import discord from "../../../assets/social/discord.png"
-import twitter from "../../../assets/social/twitter.png"
 import SocialIcon from "../../primitives/icon/icon"
 import Image from "../../primitives/image/image"
+import PropTypes from "prop-types"
 
-export default function Footer({text}) {
-  const social = [
-    { name: telegram, to: "https://web.telegram.org" },
-    { name: discord, to: "https://discord.com/" },
-    { name: twitter, to: "https://twitter.com" },
-    ]
+export default function Footer() {
+
+  const text = useSelector(selectFooterText)
+  const social = useSelector(selectSocial)
+
   return (
     <div className="footer">
       <div className="footer_logo">

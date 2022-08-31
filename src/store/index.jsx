@@ -2,17 +2,13 @@ import React from "react"
 import { configureStore, createSlice } from "@reduxjs/toolkit"
 import { Provider } from "react-redux"
 import PropTypes from "prop-types"
-
-const siteInfoSlice = createSlice({
-  initialState: {
-    test: "hello",
-  },
-  name: "siteInfo",
-})
+import { reducer as userReducer } from "../store/modules/user"
+import { reducer as siteInfoReducer } from "../store/modules/siteInfo"
 
 export const store = configureStore({
   reducer: {
-    siteInfo: siteInfoSlice.reducer,
+    siteInfo: siteInfoReducer,
+    user: userReducer,
   },
 })
 
