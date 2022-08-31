@@ -11,11 +11,12 @@ import "./home.css"
 import Image from "../../components/primitives/image/image"
 import star from "../../assets/icons/ranking.png"
 import SignFormTemplate from "../../components/partials/signFormTemplate/signFormTemplate"
-import useHomePageInfo from "./useHomePage"
+import {useSelector} from "react-redux"
+import {selectSiteIntro} from "../../store/modules/siteInfo"
 
 function HomePage() {
 
-  const { siteIntro } = useHomePageInfo()
+  const siteIntro = useSelector(selectSiteIntro)
   const [show, setShow] = useState(false)
 
   const userCardInfo = [

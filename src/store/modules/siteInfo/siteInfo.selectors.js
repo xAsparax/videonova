@@ -1,6 +1,6 @@
 import { createSelector } from "@reduxjs/toolkit"
 
-export const rootSelector = (state) => state.user
+export const rootSelector = (state) => state.siteInfo
 
 export const selectSiteIntro = createSelector(
   [rootSelector],
