@@ -1,16 +1,14 @@
 import React from "react"
 import "./footer.css"
-import { useSelector } from "react-redux"
-import { selectFooterText, selectSocial } from "../../../store/modules/siteInfo"
 import logoWhite from "../../../assets/logo/logo-white.png"
 import SocialIcon from "../../primitives/icon/icon"
 import Image from "../../primitives/image/image"
 import PropTypes from "prop-types"
+import useFooterInfo from "./useFooterInfo"
 
 export default function Footer() {
 
-  const text = useSelector(selectFooterText)
-  const social = useSelector(selectSocial)
+const { text, social} = useFooterInfo()
 
   return (
     <div className="footer">
