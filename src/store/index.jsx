@@ -4,11 +4,15 @@ import { Provider } from "react-redux"
 import PropTypes from "prop-types"
 import { reducer as userReducer } from "../store/modules/user"
 import { reducer as siteInfoReducer } from "../store/modules/siteInfo"
+import { reducer as usersListReducer } from "../store/modules/usersList"
+import { reducer as videosListReducer } from "../store/modules/video"
 
 export const store = configureStore({
   reducer: {
     siteInfo: siteInfoReducer,
     user: userReducer,
+    users: usersListReducer,
+    videos: videosListReducer,
   },
 })
 

@@ -1,9 +1,35 @@
-export const rootSelector = (state) => state
+import { createSelector } from "@reduxjs/toolkit"
 
-export const selectAuthorized = (state) => state.user.authorized
+export const rootSelector = (state) => state.user
+// {
+//   "id": "aa38a317e1e227794e9947a30e8de6f2",
+//   "slug": "vitalii_hrozynskyi",
+//   "userPic": "https://i.pravatar.cc/150?u=vitalii_hrozynskyi",
+//   "userName": "Vitalii Hrozynskyi",
+//   "token": "c3cad1232910274cab638376b7923212"
+// }
+export const selectAuthorized = createSelector(
+  rootSelector,
+  ({ authorized }) => authorized
+)
 
-export const selectUserId = (state) => state.user.authorized && state.user.userInfo.userId
+export const selectUserId = createSelector(
+  rootSelector,
+  ({ userInfo }) => userInfo && userInfo['id']
+)
 
-export const selectUserName = (state) => state.user.authorized && state.user.userInfo.userName
+export const selectUserName = createSelector(
+  rootSelector,
+  ({ userInfo }) => userInfo && userInfo['userName']
+)
 
-export const selectUserImage = (state) => state.user.authorized && state.user.userInfo.userImage
+export const selectUserImage= createSelector(
+  rootSelector,
+  ({ userInfo }) => userInfo && userInfo['userPic']
+)
+
+/*
+{
+  type: "user/login", payload: {id: 15, userName: "Name", userPic: "https://miro.medium.com/fit/c/110/110/0*VgPrBiG69JilnR9H"}
+}
+*/

@@ -2,14 +2,16 @@ import React, { useState } from "react"
 import { NavLink } from "react-router-dom"
 import "./header.css"
 import UserProfilePreview from "../userProfilePreview/userProfilePreview"
-import avatar from "../../../assets/avatars/anna-may-avatar.jpg"
 import logo from "../../../assets/logo/logo-blue.png"
 import Image from "../../primitives/image/image"
 import Button from "../../primitives/button/button"
 import PropTypes from "prop-types"
 import SignFormTemplate from "../signFormTemplate/signFormTemplate"
+import useHeaderInfo from "./useHeaderInfo"
 
-function Header({isAuthorized}) {
+function Header() {
+  const { isAuthorized, userImage, userName } = useHeaderInfo()
+
   const [show, setShow] = useState(false)
 
   return (
@@ -27,7 +29,7 @@ function Header({isAuthorized}) {
       </div>
       <div className="header_authorize">
         { isAuthorized ?
-          <UserProfilePreview image={avatar} name="Anna May" small={true}/> :
+          <UserProfilePreview image={userImage} name={userName} small={true}/> :
           <Button variant="transparent" label="Sign Up" onClick={() => setShow(true) } />
         }
       </div>
