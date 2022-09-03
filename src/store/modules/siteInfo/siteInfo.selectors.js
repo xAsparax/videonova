@@ -16,3 +16,8 @@ export const selectSocial = createSelector(
   [rootSelector],
   ({ social }) => social
 )
+
+export const selectLoading = createSelector(
+  [rootSelector],
+  ({ loading }) => loading
+)

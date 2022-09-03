@@ -16,3 +16,10 @@ mark.red {
   background: none;
 }
 
+.signUpForm__errMessage {
+  text-align: center;
+  font-weight: 700;
+  padding: 14px 49px;
+  background-color: #FADCDE;
+  border-radius: 14px;
+}

@@ -7,9 +7,11 @@ import closePic from "../../../assets/icons/close pic.png"
 import Button from "../../primitives/button/button"
 import Modal from "../modal/modal"
 import PropTypes from "prop-types"
+import {selectLoading} from "../../../store/modules/siteInfo"
+import {useSelector} from "react-redux";
 
-export default function SignFormTemplate({ show, onSubmit, onClose, isSignUpForm }) {
-
+export default function SignFormTemplate({ show, onSubmit, onClose, isSignUpForm, error }) {
+  const loading = useSelector(selectLoading)
   const [isSignUp, setIsSignUp] = useState(isSignUpForm)
 
   return (
@@ -20,12 +22,12 @@ export default function SignFormTemplate({ show, onSubmit, onClose, isSignUpForm
         </div>
         <div className="formTemplate_content">
           {
-            isSignUp ? <SignUpForm /> : <SignInForm />
+            isSignUp ? <SignUpForm error={error}/> : <SignInForm error={error}/>
           }
         </div>
         <div className="formTemplate_submit">
           <div className="formTemplate__buttonBlock">
-            <Button variant="prime" onClick={onSubmit} label={isSignUp ? "Sign Up" : "Sign In"}/>
+            <Button variant="prime" loading={loading} onClick={onSubmit} label={isSignUp ? "Sign Up" : "Sign In"}/>
           </div>
           <div className="formTemplate__notification">
             {isSignUp ? <span>Already have an account?</span> : <span>Don't have an account?</span>}

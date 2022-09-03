@@ -8,7 +8,7 @@ import Image from "../../primitives/image/image"
 import eye from "../../../assets/icons/eye.png"
 import eyeClosed from "../../../assets/icons/eye-closed.png"
 
-export default function InputField({title, placeholder, error, password, helpLabel, helpLink }) {
+export default function InputField({id, title, placeholder, error, password, helpLabel, helpLink }) {
   const className = `inputField__form ${error ? `form_error` : ``}`
   const [passwordShown, setPasswordShown] = useState(false)
   const togglePassword = () => {
@@ -24,7 +24,7 @@ export default function InputField({title, placeholder, error, password, helpLab
         { error ? <Link className="link-style" to={helpLink}>{helpLabel}</Link> : ``}
       </div>
       <div className="password_form">
-        <input className={className} type={password ? inputType : "text"} value={value} onChange={(e)=>{setValue(e.target.value)}} placeholder={placeholder}/>
+        <input id={id} className={className} type={password ? inputType : "text"} value={value} onChange={(e)=>{setValue(e.target.value)}} placeholder={placeholder}/>
         { password ?
           <div className="eye-icon" onClick={togglePassword}>
             <Image src={passwordShown ? eyeClosed : eye} fit="contain"/>

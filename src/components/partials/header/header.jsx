@@ -8,11 +8,59 @@ import Button from "../../primitives/button/button"
 import PropTypes from "prop-types"
 import SignFormTemplate from "../signFormTemplate/signFormTemplate"
 import useHeaderInfo from "./useHeaderInfo"
+import {useDispatch} from "react-redux"
+import {useNavigate} from "react-router-dom"
+import {getSignUpData} from "../signUpForm/signUpForm"
 
 function Header() {
   const { isAuthorized, userImage, userName } = useHeaderInfo()
-
   const [show, setShow] = useState(false)
+  const [formError, setFormError] = useState('')
+
+  let navigate = useNavigate()
+  const dispatch = useDispatch()
+  const signUp = async () => {
+    try {
+      const formData = getSignUpData()
+      if (!formData.password || !formData.repeatPassword || !formData.username) {
+        setFormError("All fields are mandatory.")
+        return
+      }
+      if (formData.password !== formData.repeatPassword) {
+        setFormError("Password and password confirmation doesn't match.")
+        return
+      }
+      dispatch({type: "siteInfo/showLoading"})
+      const response = await fetch("https://wonderful-app-lmk4d.cloud.serverless.com/register",
+        {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        })
+
+      const user_info = await response.json()
+      dispatch({type: "siteInfo/hideLoading"})
+      if (user_info.type === "exists") {
+        setFormError("User already exists")
+      } else {
+        dispatch({type: 'user/login', payload: user_info})
+        dispatch({type: 'users/add', payload: [user_info]})
+        navigate(`/user/${user_info.id}`)
+      }
+    } catch (e) {
+      alert('Exception: ' + e)
+    }
+  }
+
+  // Response:{
+  //   "slug":"wild_bill",
+  //   "userPic":"https://i.pravatar.cc/150?u=wild_bill",
+  //   "id":"73078efd34c7663dce0a15fcbd9efd14",
+  //   "userName":"Wild Bill",
+  //   "authToken":"6636a62a208d3f8652f394fd24010579"
+  // }
 
   return (
     <div className="header">
@@ -33,7 +81,7 @@ function Header() {
           <Button variant="transparent" label="Sign Up" onClick={() => setShow(true) } />
         }
       </div>
-        <SignFormTemplate isSignUpForm="true" onClose={() => setShow(false)} show={show} />
+        <SignFormTemplate error={formError} isSignUpForm="true" onSubmit={signUp} onClose={() => setShow(false)} show={show} />
     </div>
   )
 }

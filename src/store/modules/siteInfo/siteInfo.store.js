@@ -13,6 +13,7 @@ const siteInfoSlice = createSlice({
       { name: discord, to: "https://discord.com/" },
       { name: twitter, to: "https://twitter.com" },
     ],
+    loading: false,
   },
   name: "siteInfo",
   reducers: {
@@ -24,6 +25,12 @@ const siteInfoSlice = createSlice({
     },
     changeSocial(state, action) {
       state.social = action.payload
+    },
+    showLoading(state) {
+      state.loading = true
+    },
+    hideLoading(state) {
+      state.loading = false
     },
   }
 })
