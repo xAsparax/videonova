@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, {useEffect, useState} from "react"
 import { NavLink } from "react-router-dom"
 import "./header.css"
 import UserProfilePreview from "../userProfilePreview/userProfilePreview"
@@ -6,52 +6,25 @@ import logo from "../../../assets/logo/logo-blue.png"
 import Image from "../../primitives/image/image"
 import Button from "../../primitives/button/button"
 import PropTypes from "prop-types"
-import SignFormTemplate from "../signFormTemplate/signFormTemplate"
+import SignFormTemplate, {showForm, hideForm}  from "../signFormTemplate/signFormTemplate"
 import useHeaderInfo from "./useHeaderInfo"
 import {useDispatch} from "react-redux"
 import {useNavigate} from "react-router-dom"
-import {getSignUpData} from "../signUpForm/signUpForm"
 
 function Header() {
-  const { isAuthorized, userImage, userName } = useHeaderInfo()
-  const [show, setShow] = useState(false)
-  const [formError, setFormError] = useState('')
+  const { isAuthorized, userId, userImage, userName, userError, show, isSignUp } = useHeaderInfo()
+  const [authorizedState, setAuthorizedState] = useState(isAuthorized)
 
   let navigate = useNavigate()
-  const dispatch = useDispatch()
-  const signUp = async () => {
-    try {
-      const formData = getSignUpData()
-      if (!formData.password || !formData.repeatPassword || !formData.username) {
-        setFormError("All fields are mandatory.")
-        return
-      }
-      if (formData.password !== formData.repeatPassword) {
-        setFormError("Password and password confirmation doesn't match.")
-        return
-      }
-      dispatch({type: "siteInfo/showLoading"})
-      const response = await fetch("https://wonderful-app-lmk4d.cloud.serverless.com/register",
-        {
-          method: "POST",
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(formData)
-        })
-
-      const user_info = await response.json()
-      dispatch({type: "siteInfo/hideLoading"})
-      if (user_info.type === "exists") {
-        setFormError("User already exists")
-      } else {
-        dispatch({type: 'user/login', payload: user_info})
-        dispatch({type: 'users/add', payload: [user_info]})
-        navigate(`/user/${user_info.id}`)
-      }
-    } catch (e) {
-      alert('Exception: ' + e)
+  useEffect(() => {
+    if ((authorizedState !== isAuthorized) && isAuthorized) {
+      setAuthorizedState(authorizedState)
+      navigate(`/user/${userId}`)
     }
+  }, [isAuthorized])
+  const dispatch = useDispatch()
+  const onSubmit = () => {
+    dispatch({type: "user/authorize"})
   }
 
   // Response:{
@@ -78,10 +51,10 @@ function Header() {
       <div className="header_authorize">
         { isAuthorized ?
           <UserProfilePreview image={userImage} name={userName} small={true}/> :
-          <Button variant="transparent" label="Sign Up" onClick={() => setShow(true) } />
+          <Button variant="transparent" label="Sign Up" onClick={() => dispatch(showForm(true)) } />
         }
       </div>
-        <SignFormTemplate error={formError} isSignUpForm="true" onSubmit={signUp} onClose={() => setShow(false)} show={show} />
+        <SignFormTemplate error={userError} isSignUpForm={isSignUp} onSubmit={onSubmit} onClose={() => dispatch(hideForm())} show={show} />
     </div>
   )
 }

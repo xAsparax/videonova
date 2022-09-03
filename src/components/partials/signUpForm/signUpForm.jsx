@@ -4,11 +4,12 @@ import InputField from "../inputField/inputField"
 import "./signUpForm.css"
 import PropTypes from "prop-types"
 
+
 export default function SignUpForm({error}) {
   return (
       <div className="signUpForm">
         <div className="signUpForm__heading">
-          <Heading weight="1" color="black">Sign<mark className="red">Up</mark></Heading>
+          <Heading weight="1" color="black">Sign <mark className="red">Up</mark></Heading>
         </div>
         {error && <div className="signUpForm__errMessage">{error}</div>}
         <InputField id="sign-up-name" title="Name" placeholder="Type name..." />

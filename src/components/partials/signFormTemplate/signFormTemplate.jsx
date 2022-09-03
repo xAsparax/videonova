@@ -1,18 +1,39 @@
-import React, { useState } from "react"
+import React from "react"
 import "./signFormTemplate.css"
-import SignInForm from "../signInForm/signInForm"
-import SignUpForm from "../signUpForm/signUpForm"
+import SignInForm, {getSignInData} from "../signInForm/signInForm"
+import SignUpForm, {getSignUpData} from "../signUpForm/signUpForm"
 import Image from "../../primitives/image/image"
 import closePic from "../../../assets/icons/close pic.png"
 import Button from "../../primitives/button/button"
 import Modal from "../modal/modal"
 import PropTypes from "prop-types"
 import {selectLoading} from "../../../store/modules/siteInfo"
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+
+
+export function showForm(isSignUp) {
+  return {type: "forms/show", payload: {isSignUp: isSignUp}}
+}
+
+export function hideForm() {
+  return {type: "forms/hide"}
+}
+
+function getPrompt(isSignUp) {
+  return isSignUp ? "Already have an account?" : "Don't have an account?"
+}
+
+function getLabel(isSignUp) {
+  return isSignUp ? "Sign In" : "Sign Up"
+}
 
 export default function SignFormTemplate({ show, onSubmit, onClose, isSignUpForm, error }) {
   const loading = useSelector(selectLoading)
-  const [isSignUp, setIsSignUp] = useState(isSignUpForm)
+  const dispatch = useDispatch()
+  const submitHandler = () => {
+    dispatch({type: "forms/update", payload: isSignUpForm ? getSignUpData() : getSignInData()})
+    onSubmit()
+  }
 
   return (
     <Modal show={show}>
@@ -22,16 +43,16 @@ export default function SignFormTemplate({ show, onSubmit, onClose, isSignUpForm
         </div>
         <div className="formTemplate_content">
           {
-            isSignUp ? <SignUpForm error={error}/> : <SignInForm error={error}/>
+            isSignUpForm ? <SignUpForm error={error}/> : <SignInForm error={error}/>
           }
         </div>
         <div className="formTemplate_submit">
           <div className="formTemplate__buttonBlock">
-            <Button variant="prime" loading={loading} onClick={onSubmit} label={isSignUp ? "Sign Up" : "Sign In"}/>
+            <Button variant="prime" loading={loading} onClick={submitHandler} label={getLabel(!isSignUpForm)}/>
           </div>
           <div className="formTemplate__notification">
-            {isSignUp ? <span>Already have an account?</span> : <span>Don't have an account?</span>}
-              <div className="link-style" onClick={() => setIsSignUp(!isSignUp)}> {isSignUp ? "Sign In" : "Sign Up"} </div>
+            <span>{getPrompt(isSignUpForm)}</span>
+            <div className="link-style" onClick={() => dispatch(showForm(!isSignUpForm))}>{getLabel(isSignUpForm)}</div>
           </div>
         </div>
       </div>

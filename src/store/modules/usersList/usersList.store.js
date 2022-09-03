@@ -7,40 +7,16 @@
 //   }
 // ]
 import {createSlice} from "@reduxjs/toolkit"
-import annaMay from "../../../assets/avatars/anna-may-avatar.jpg"
-import denBennet from "../../../assets/avatars/den-bennet-avatar.jpg"
-import janeDou from "../../../assets/avatars/jane-dou-avatar.jpg"
-import kerryWilliams from "../../../assets/avatars/kerry-willams-avatar.jpg"
+
 
 const usersListSlice = createSlice({
   initialState: {
-    "1": {
-      id: "1",
-      slug: "Anna_May",
-      userPic: annaMay,
-      userName: "Anna May"
-    },
-    "2": {
-      id: "2",
-      slug: "Den_Bennet",
-      userPic: denBennet,
-      userName: "Den Bennet"
-    },
-    "3": {
-      id: "3",
-      slug: "Jane_Dou",
-      userPic: janeDou,
-      userName: "Jane Dou"
-    },
-    "4": {
-      id: "4",
-      slug: "Kerry Williams",
-      userPic: kerryWilliams,
-      userName: "Kerry Williams"
-    },
   },
   name: "users",
   reducers: {
+    load(state, action) {
+      state = {}
+    },
     add(state, action) {
       action.payload.forEach(user => state[user.id] = user)
     },
@@ -51,6 +27,6 @@ const usersListSlice = createSlice({
 })
 
 const reducer = usersListSlice.reducer
-const {add, remove} = usersListSlice.actions
+const {load, add, remove} = usersListSlice.actions
 
-export { reducer, add, remove }
+export { reducer, load, add, remove }

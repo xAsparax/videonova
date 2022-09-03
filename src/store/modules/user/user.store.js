@@ -11,22 +11,32 @@ import {createSlice} from "@reduxjs/toolkit"
 const userSlice = createSlice({
   initialState: {
     authorized: false,
-    userInfo: null,
+    error: null,
+    userInfo: null
   },
   name: "user",
   reducers: {
-    login(state, action) {
+    authorize(state, action) {
+      state.authorized = false
+      state.error = null
+    },
+    authSuccess(state, action) {
       state.authorized = true
       state.userInfo = action.payload
     },
+    authFailure(state, action) {
+      state.authorized = false
+      state.error = action.payload.error
+    },
     logout(state) {
       state.authorized = false
+      state.error = null
       state.userInfo = null
     }
   }
 })
 
 const reducer = userSlice.reducer
-const {login, logout} = userSlice.actions
+const {signUp, authorize, authSuccess, authFailure, logout} = userSlice.actions
 
-export { reducer, login, logout }
+export { reducer, signUp, authorize, authSuccess, authFailure, logout }

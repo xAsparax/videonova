@@ -12,13 +12,20 @@ export default function SignInForm({ error }) {
         <Heading weight="1" color="black">Sign <mark className="red">In</mark></Heading>
       </div>
       {error && <div className="signInForm__errMessage">{error}</div>}
-      <InputField title="Name" placeholder="Type name..."/>
+      <InputField id="sign-in-name" title="Name" placeholder="Type name..."/>
       { error ?
-        <InputField title="Password" placeholder="Type password..." password="true" error="true" helpLabel="Forgot Password?" helpLink="/"/> :
-        <InputField title="Password" placeholder="Type password..." password="true"/>
+        <InputField id="sign-in-password" title="Password" placeholder="Type password..." password="true" error="true" helpLabel="Forgot Password?" helpLink="/"/> :
+        <InputField id="sign-in-password" title="Password" placeholder="Type password..." password="true"/>
       }
     </div>
   )
+}
+
+export function getSignInData() {
+  return {
+    username: document.getElementById("sign-in-name").getAttribute("value"),
+    password: document.getElementById("sign-in-password").getAttribute("value"),
+  }
 }
 
 SignInForm.propTypes={

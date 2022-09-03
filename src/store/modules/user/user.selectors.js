@@ -23,9 +23,14 @@ export const selectUserName = createSelector(
   ({ userInfo }) => userInfo && userInfo['userName']
 )
 
-export const selectUserImage= createSelector(
+export const selectUserImage = createSelector(
   rootSelector,
   ({ userInfo }) => userInfo && userInfo['userPic']
+)
+
+export const selectUserError = createSelector(
+  rootSelector,
+  ({ error }) => error
 )
 
 /*

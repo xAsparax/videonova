@@ -1,4 +1,4 @@
-import React, { useState} from "react"
+import React from "react"
 import Layout from "../../layout"
 import CardUser from "../../components/partials/cardUser/cardUser"
 import Heading from "../../components/primitives/heading/heading"
@@ -6,24 +6,16 @@ import Button from "../../components/primitives/button/button"
 import "./home.css"
 import Image from "../../components/primitives/image/image"
 import star from "../../assets/icons/ranking.png"
-import SignFormTemplate from "../../components/partials/signFormTemplate/signFormTemplate"
-import {useSelector} from "react-redux"
+import {showForm} from "../../components/partials/signFormTemplate/signFormTemplate"
+import {useDispatch, useSelector} from "react-redux"
 import {selectSiteIntro} from "../../store/modules/siteInfo"
 import {selectUsers} from "../../store/modules/usersList"
 
 function HomePage() {
-
+  const dispatch = useDispatch()
+  dispatch({type: "users/load"})
   const userCardInfo = useSelector(selectUsers)
   const siteIntro = useSelector(selectSiteIntro)
-  const [show, setShow] = useState(false)
-
-  // const userCardInfo = [
-  //   {title: "Anna May", image: annaMay, buttonLink: "/", buttonLabel: "To profile", likesValue: 225, videosValue: 12},
-  //   {title: "Den Bennet", image: denBennet, buttonLink: "/", buttonLabel: "To profile", likesValue: 120, videosValue: 27},
-  //   {title: "Jane Dou", image: janeDou, buttonLink: "/", buttonLabel: "To profile", likesValue: 305, videosValue: 255},
-  //   {title: "Kerry Williams", image: kerryWilliams, buttonLink: "/", buttonLabel: "To profile", likesValue: 400, videosValue: 12}
-  // ]
-
 
   return (
     <Layout>
@@ -35,7 +27,7 @@ function HomePage() {
            <span>{ siteIntro }</span>
           </div>
           <div className="button__elem">
-          <Button variant="prime" label="Start Now" onClick={() => setShow(true)}/>
+          <Button variant="prime" label="Start Now" onClick={() => dispatch(showForm(false))}/>
           </div>
         </div>
         <div className="creators_block">
@@ -52,7 +44,6 @@ function HomePage() {
               </div>))}
           </div>
         </div>
-        <SignFormTemplate isSignUp="false" onClose={() => setShow(false)} show={show}/>
     </Layout>
   )
 }
