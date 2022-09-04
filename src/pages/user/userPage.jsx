@@ -9,11 +9,13 @@ import videoIcon from "../../assets/icons/video-square-black.png"
 import "./userPage.css"
 import VideoFormTemplate from "../../components/partials/videoFormTemplate/videoFormTemplate"
 import useUserPageInfo from "./useUserPageInfo"
+import {useParams} from "react-router-dom"
 
 function UserPage() {
-
-  const { isAuthorized, userName, userImage, userVideo } = useUserPageInfo()
+  const params = useParams()
+  const { userName, authorizedId, userImage, userVideo } = useUserPageInfo(params.id)
   const [show, setShow] = useState(false)
+  const isCurrentUser = params.id === authorizedId
 
   return (
     <Layout>
@@ -28,7 +30,7 @@ function UserPage() {
               <Image src={videoIcon}/>
            </div>
           </div>
-          { isAuthorized ?
+          { isCurrentUser ?
           <Button variant="prime" label="Add video" onClick={() => setShow(true)}/> : ``
           }
         </div>
