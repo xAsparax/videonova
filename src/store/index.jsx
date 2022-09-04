@@ -8,9 +8,10 @@ import PropTypes from "prop-types"
 import { reducer as userReducer, authorize } from "../store/modules/user"
 import { reducer as siteInfoReducer } from "../store/modules/siteInfo"
 import { reducer as usersListReducer, load as loadUsers } from "../store/modules/usersList"
-import { reducer as videosListReducer } from "../store/modules/video"
+import { reducer as videosListReducer, load as loadVideos } from "../store/modules/video"
 import { reducer as formsReducer, selectFormData, selectIsSignUp } from "../store/modules/forms";
 import {hideForm} from "../components/partials/signFormTemplate/signFormTemplate";
+import {action} from "@storybook/addon-actions";
 
 const authListener = createListenerMiddleware()
 
@@ -74,7 +75,27 @@ userListener.startListening({
         listenerApi.dispatch({type: "users/add", payload: users})
       }
     } catch (e) {
+    }
+  }
+})
 
+const videoListener = createListenerMiddleware()
+videoListener.startListening ({
+  actionCreator: loadVideos,
+  effect: async (action, listenerApi) => {
+    const apiLink = "https://wonderful-app-lmk4d.cloud.serverless.com/video"
+    try {
+      const response = await fetch(apiLink, {
+        method: "GET",
+        headers: {
+          "Accept": "application/json"
+        }
+      })
+      const videos = await response.json()
+      if (videos) {
+        listenerApi.dispatch({type: "videos/add", payload: videos})
+      }
+    } catch (e) {
     }
   }
 })
@@ -87,7 +108,8 @@ export const store = configureStore({
     videos: videosListReducer,
     forms: formsReducer
   },
-  middleware: getDefaultMiddleware => getDefaultMiddleware().prepend(authListener.middleware, userListener.middleware),
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware().prepend(authListener.middleware, userListener.middleware, videoListener.middleware),
 })
 
 export function Store(props) {

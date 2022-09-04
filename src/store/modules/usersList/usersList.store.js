@@ -8,7 +8,6 @@
 // ]
 import {createSlice} from "@reduxjs/toolkit"
 
-
 const usersListSlice = createSlice({
   initialState: {
   },

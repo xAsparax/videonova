@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useEffect, useState} from "react"
 import Layout from "../../layout"
 import UserProfilePreview from "../../components/partials/userProfilePreview/userProfilePreview"
 import VideoCard from "../../components/partials/videoCard/videoCard"
@@ -10,8 +10,13 @@ import "./userPage.css"
 import VideoFormTemplate from "../../components/partials/videoFormTemplate/videoFormTemplate"
 import useUserPageInfo from "./useUserPageInfo"
 import {useParams} from "react-router-dom"
+import {useDispatch} from "react-redux";
 
 function UserPage() {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch({type: "videos/load"})
+  }, [])
   const params = useParams()
   const { userName, authorizedId, userImage, userVideo } = useUserPageInfo(params.id)
   const [show, setShow] = useState(false)

@@ -17,5 +17,5 @@ export const selectVideos = createSelector(
 
 export const selectVideoByUserID = (userId) => createSelector(
   rootSelector,
-  (state) => state[userId] || []
+  (state) => Object.values(state[userId] || {}) || []
 )
