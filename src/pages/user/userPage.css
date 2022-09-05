@@ -45,3 +45,18 @@
   max-width: 314px;
   padding-bottom: 28px;
 }
+
+@media screen and (max-width: 768px) {
+  .userVideo_head {
+    flex-direction: column;
+  }
+
+  .userVideo_title {
+    margin-bottom: 30px;
+  }
+
+  .userVideo_list {
+    justify-content: center;
+    align-self: center;
+  }
+}

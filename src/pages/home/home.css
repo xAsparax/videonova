@@ -24,7 +24,7 @@ mark.red {
 
 .creators_block {
   min-height: 53px;
-  padding: 10px 50px;
+  padding: 10px 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -51,7 +51,7 @@ mark.red {
 .creators_block__content {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-  grid-gap: 38px;
+  grid-gap: 30px;
 }
 
 .cardUser_container {
