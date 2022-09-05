@@ -36,7 +36,7 @@ export default function VideoFormTemplate({show, onClose}) {
         </div>
         <div className="videoFormTemplate_content">
           {
-            isVideoForm ? <AddContentForm error={error} /> : <AddVideoBlock loading={loading}/>
+            isVideoForm ? <AddContentForm error={error} /> : <AddVideoBlock error={error} loading={loading}/>
           }
         </div>
         {isVideoForm && <div className="videoFormTemplate_submit">

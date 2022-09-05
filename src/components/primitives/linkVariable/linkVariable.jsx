@@ -3,8 +3,7 @@ import { Link } from "react-router-dom"
 import PropTypes from "prop-types"
 import IsInternalLink from "../isInternalLink/isInternalLink"
 
-function LinkVariable ({ children, action, ...props }) {
-
+function LinkVariable({ children, action, ...props }) {
   if (!action) {
     return <span {...props}>{children}</span>
   }

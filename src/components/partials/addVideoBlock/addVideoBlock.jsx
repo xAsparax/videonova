@@ -11,7 +11,7 @@ import {useDispatch} from "react-redux"
 import {hideVideoForm} from "../videoFormTemplate/videoFormTemplate"
 
 
-export default function AddVideoBlock({loading}) {
+export default function AddVideoBlock({loading, error}) {
   const dispatch = useDispatch()
   const goToVideo = () => {
     dispatch({type: "videos/load"})
@@ -29,8 +29,11 @@ export default function AddVideoBlock({loading}) {
           { loading ? <Spinner big="true" /> : <Image src={mark} fit="contain"/> }
         </div>
       </div>
-      <div className="addVideoBlock__notification">
+      <div className="addVideoBlock__notification">{
+        error ?
+        <Heading weight="2" children={error}/> :
         <Heading weight="2" children={loading ? "Loading..." : "Successful"}/>
+      }
       </div>
       <div className="addVideoBlock__button">
         <Button variant="prime" label="To Video" disabled={loading} onClick={goToVideo}/>

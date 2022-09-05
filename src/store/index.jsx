@@ -124,9 +124,9 @@ addVideoListener.startListening ({
         body: JSON.stringify(videoFormData)
       })
       const videoInfo = await response.json()
-      // if (response.status === 403) {
-      //   listenerApi.dispatch({type: "videoForm/formErr", payload: {error: "Loading Failed"}})
-      // }
+      if (response.status === 403) {
+        listenerApi.dispatch({type: "videoForm/formErr", payload: {error: "Loading Failed"}})
+      }
       if (videoInfo) {
         listenerApi.dispatch({type: 'videoForm/showSuccess'})
         listenerApi.dispatch({type: "videos/add", payload: videos})

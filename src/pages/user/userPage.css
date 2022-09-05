@@ -8,8 +8,8 @@
   padding: 10px 50px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  margin-bottom: 85px;
+  justify-content: center;
+  margin: 0 auto 75px;
 }
 
 .userVideo_head {
@@ -36,10 +36,9 @@
 }
 
 .userVideo_list {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(314px, 1fr));
+  grid-gap: 10px;
 }
 
 .userVideo_container {
