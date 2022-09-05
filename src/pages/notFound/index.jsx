@@ -3,7 +3,6 @@ import Layout from "../../layout"
 import Heading from "../../components/primitives/heading/heading"
 import "./notFound.css"
 import Button from "../../components/primitives/button/button"
-import {NavLink} from "react-router-dom"
 
 function NotFoundPage() {
   return <Layout>
@@ -15,9 +14,7 @@ function NotFoundPage() {
       </div>
       <div className="notFound_button">
         <span> Go to </span>
-        <NavLink to="/">
-          <Button onClick="/" variant="prime">Homepage</Button>
-        </NavLink>
+        <Button onClick="/" label="Homepage" variant="prime"/>
       </div>
     </div>
   </Layout>

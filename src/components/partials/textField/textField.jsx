@@ -3,14 +3,14 @@ import "./textField.css"
 import PropTypes from "prop-types";
 import Heading from "../../primitives/heading/heading";
 
-export default function TextField({title, placeholder, inputValue }) {
+export default function TextField({id, title, placeholder, inputValue }) {
 
   return (
     <div className="textField">
       <div className="textField__title">
         <Heading weight="3">{title}</Heading>
       </div>
-      <textarea className="textField__form" rows="30" placeholder={placeholder}>{inputValue}</textarea>
+      <textarea id={id} className="textField__form" rows="30" placeholder={placeholder}>{inputValue}</textarea>
     </div>
   )
 }

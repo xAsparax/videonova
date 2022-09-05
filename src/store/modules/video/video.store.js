@@ -14,7 +14,7 @@ const videosListSlice = createSlice({
   },
   name: "videos",
   reducers: {
-    load(state, action) {
+    load(state) {
       state = {}
     },
     add(state, action) {
@@ -30,6 +30,6 @@ const videosListSlice = createSlice({
 })
 
 const reducer = videosListSlice.reducer
-const {load, add, remove} = videosListSlice.actions
+const {load, add, remove, upload } = videosListSlice.actions
 
-export { reducer, load, add, remove }
+export { reducer, load, add, remove, upload }

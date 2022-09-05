@@ -37,17 +37,11 @@ function Header() {
 
   return (
     <div className="header">
-      <div className="header_logo">
-        <Image src={logo} fit="contain"/>
-      </div>
-      <div className="header_nav">
-        header:
-        <NavLink to="/">home</NavLink>
-        <NavLink to="/user/1">1</NavLink>
-        <NavLink to="/user/2">2</NavLink>
-        <NavLink to="/user/name">name</NavLink>
-        <NavLink to="/qwert">qwert</NavLink>
-      </div>
+      <NavLink to="/">
+        <div className="header_logo">
+          <Image src={logo} fit="contain"/>
+        </div>
+      </NavLink>
       <div className="header_authorize">
         { isAuthorized ?
           <UserProfilePreview image={userImage} name={userName} small={true}/> :

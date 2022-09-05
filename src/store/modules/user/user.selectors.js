@@ -25,7 +25,12 @@ export const selectUserName = createSelector(
 
 export const selectUserImage = createSelector(
   rootSelector,
-  ({ userInfo }) => userInfo && userInfo['userPic']
+  ({ userInfo }) => userInfo && userInfo.userPic
+)
+
+export const selectUserToken = createSelector(
+  rootSelector,
+  ({userInfo}) => userInfo && userInfo.authToken
 )
 
 export const selectUserError = createSelector(

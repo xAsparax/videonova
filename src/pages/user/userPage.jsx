@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react"
+import React, {useEffect} from "react"
 import Layout from "../../layout"
 import UserProfilePreview from "../../components/partials/userProfilePreview/userProfilePreview"
 import VideoCard from "../../components/partials/videoCard/videoCard"
@@ -7,10 +7,11 @@ import Heading from "../../components/primitives/heading/heading"
 import Image from "../../components/primitives/image/image"
 import videoIcon from "../../assets/icons/video-square-black.png"
 import "./userPage.css"
-import VideoFormTemplate from "../../components/partials/videoFormTemplate/videoFormTemplate"
+import VideoFormTemplate, {showVideoForm} from "../../components/partials/videoFormTemplate/videoFormTemplate"
 import useUserPageInfo from "./useUserPageInfo"
 import {useParams} from "react-router-dom"
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux"
+import {selectShow as selectVideoFormShow} from "../../store/modules/videoForm"
 
 function UserPage() {
   const dispatch = useDispatch()
@@ -19,8 +20,11 @@ function UserPage() {
   }, [])
   const params = useParams()
   const { userName, authorizedId, userImage, userVideo } = useUserPageInfo(params.id)
-  const [show, setShow] = useState(false)
+  const videoFormShow = useSelector(selectVideoFormShow)
   const isCurrentUser = params.id === authorizedId
+  const addVideo = () => {
+    dispatch(showVideoForm())
+  }
 
   return (
     <Layout>
@@ -36,7 +40,7 @@ function UserPage() {
            </div>
           </div>
           { isCurrentUser ?
-          <Button variant="prime" label="Add video" onClick={() => setShow(true)}/> : ``
+          <Button variant="prime" label="Add video" onClick={addVideo}/> : ``
           }
         </div>
         <div className="userVideo_list">
@@ -46,7 +50,7 @@ function UserPage() {
             </div>))}
         </div>
       </div>
-      <VideoFormTemplate isVideoForm="false" onClose={() => setShow(false)} show={show}/>
+      <VideoFormTemplate isVideoForm="false" onClose={() => dispatch(hideVideForm())} show={videoFormShow} userId={authorizedId}/>
     </Layout>
   )
 }

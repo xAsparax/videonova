@@ -8,7 +8,7 @@ import Button from "../../primitives/button/button"
 import Modal from "../modal/modal"
 import PropTypes from "prop-types"
 import {selectLoading} from "../../../store/modules/siteInfo"
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux"
 
 
 export function showForm(isSignUp) {

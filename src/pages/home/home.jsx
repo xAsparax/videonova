@@ -10,12 +10,18 @@ import {showForm} from "../../components/partials/signFormTemplate/signFormTempl
 import {useDispatch, useSelector} from "react-redux"
 import {selectSiteIntro} from "../../store/modules/siteInfo"
 import {selectUsers} from "../../store/modules/usersList"
+import {useEffect} from "react"
+import {selectAuthorized, selectUserId} from "../../store/modules/user"
 
 function HomePage() {
   const dispatch = useDispatch()
-  dispatch({type: "users/load"})
+  useEffect(() => {
+    dispatch({type: "users/load"})
+  }, [])
   const userCardInfo = useSelector(selectUsers)
   const siteIntro = useSelector(selectSiteIntro)
+  const isAuthorized = useSelector(selectAuthorized)
+  const authorizedId = useSelector(selectUserId)
 
   return (
     <Layout>
@@ -27,7 +33,10 @@ function HomePage() {
            <span>{ siteIntro }</span>
           </div>
           <div className="button__elem">
-          <Button variant="prime" label="Start Now" onClick={() => dispatch(showForm(false))}/>
+            { !isAuthorized ?
+            <Button variant="prime" label="Start Now" onClick={() => dispatch(showForm(false))}/> :
+            <Button variant="prime" label="To Profile" onClick={`user/${authorizedId}`}/>
+          }
           </div>
         </div>
         <div className="creators_block">

@@ -5,12 +5,13 @@ import {
 } from "@reduxjs/toolkit"
 import {Provider} from "react-redux"
 import PropTypes from "prop-types"
-import { reducer as userReducer, authorize } from "../store/modules/user"
+import {reducer as userReducer, authorize, selectUserToken} from "../store/modules/user"
 import { reducer as siteInfoReducer } from "../store/modules/siteInfo"
 import { reducer as usersListReducer, load as loadUsers } from "../store/modules/usersList"
-import { reducer as videosListReducer, load as loadVideos } from "../store/modules/video"
-import { reducer as formsReducer, selectFormData, selectIsSignUp } from "../store/modules/forms";
-import {hideForm} from "../components/partials/signFormTemplate/signFormTemplate";
+import { reducer as videosListReducer, load as loadVideos} from "../store/modules/video"
+import { reducer as formsReducer, selectFormData, selectIsSignUp } from "../store/modules/forms"
+import {reducer as videoFormReducer, selectIsVideoForm, selectVideoFormData, update as uploadVideo} from "../store/modules/videoForm"
+import {hideForm} from "../components/partials/signFormTemplate/signFormTemplate"
 import {action} from "@storybook/addon-actions";
 
 const authListener = createListenerMiddleware()
@@ -100,16 +101,54 @@ videoListener.startListening ({
   }
 })
 
+const addVideoListener = createListenerMiddleware()
+addVideoListener.startListening ({
+  actionCreator: uploadVideo,
+  effect: async (action, listenerApi ) => {
+    try {
+      const state = listenerApi.getState()
+      const videoFormData = selectVideoFormData(state)
+      const isVideoForm = selectIsVideoForm(state)
+      const userToken = selectUserToken(state)
+      if (isVideoForm && (!videoFormData.url || !videoFormData.title || !videoFormData.description)) {
+        listenerApi.dispatch({type: "videoForm/formErr", payload: {error: "All fields are mandatory."}})
+        return
+      }
+      listenerApi.dispatch({type: "videoForm/showLoading"})
+      const apiLink = "https://wonderful-app-lmk4d.cloud.serverless.com/video"
+      const response = await fetch(apiLink, {
+        method: "POST",
+        headers: {
+          'Content-Type': "application/json",
+          'Authorization': userToken
+        },
+        body: JSON.stringify(videoFormData)
+      })
+      const videoInfo = await response.json()
+      // if (response.status === 403) {
+      //   listenerApi.dispatch({type: "videoForm/formErr", payload: {error: "Loading Failed"}})
+      // }
+      if (videoInfo) {
+        listenerApi.dispatch({type: 'videoForm/showSuccess'})
+        listenerApi.dispatch({type: "videos/add", payload: videos})
+      }
+    } catch (e) {
+    }
+  }
+})
+
 export const store = configureStore({
   reducer: {
     siteInfo: siteInfoReducer,
     user: userReducer,
     users: usersListReducer,
     videos: videosListReducer,
-    forms: formsReducer
+    forms: formsReducer,
+    videoForm: videoFormReducer,
   },
   middleware: getDefaultMiddleware =>
-    getDefaultMiddleware().prepend(authListener.middleware, userListener.middleware, videoListener.middleware),
+    getDefaultMiddleware().prepend(authListener.middleware, userListener.middleware,
+    videoListener.middleware, addVideoListener.middleware),
 })
 
 export function Store(props) {

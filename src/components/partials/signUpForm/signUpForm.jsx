@@ -2,8 +2,6 @@ import React from "react"
 import Heading from "../../primitives/heading/heading"
 import InputField from "../inputField/inputField"
 import "./signUpForm.css"
-import PropTypes from "prop-types"
-
 
 export default function SignUpForm({error}) {
   return (
