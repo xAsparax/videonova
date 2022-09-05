@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from "react"
 import CardUser from "./cardUser"
 import avatar from "../../../assets/avatars/anna-may-avatar.jpg"

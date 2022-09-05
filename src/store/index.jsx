@@ -12,7 +12,6 @@ import { reducer as videosListReducer, load as loadVideos} from "../store/module
 import { reducer as formsReducer, selectFormData, selectIsSignUp } from "../store/modules/forms"
 import {reducer as videoFormReducer, selectIsVideoForm, selectVideoFormData, update as uploadVideo} from "../store/modules/videoForm"
 import {hideForm} from "../components/partials/signFormTemplate/signFormTemplate"
-import {action} from "@storybook/addon-actions";
 
 const authListener = createListenerMiddleware()
 

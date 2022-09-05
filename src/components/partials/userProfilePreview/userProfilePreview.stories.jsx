@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from "react"
 import UserProfilePreview from "./userProfilePreview"
 import avatar from "../../../assets/avatars/anna-may-avatar.jpg"
@@ -13,7 +14,7 @@ export default {
 }
 
 export function Primary(args) {
-  return <UserProfilePreview {...args}/>
+  return <UserProfilePreview {...args} />
 }
 
 Primary.args = {
@@ -23,7 +24,7 @@ Primary.args = {
 }
 
 export function Small(args) {
-  return <UserProfilePreview {...args}/>
+  return <UserProfilePreview {...args} />
 }
 
 Small.args = {

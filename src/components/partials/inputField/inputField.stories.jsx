@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from "react"
 import InputField from "./inputField"
 
@@ -10,7 +11,7 @@ export default {
     password: { control: "boolean" },
     error: { control: "boolean" },
     helpLabel: { control: "text" },
-    helpLink: { control: "text" }
+    helpLink: { control: "text" },
   },
 }
 
@@ -44,5 +45,5 @@ export function PasswordForm(args) {
 PasswordForm.args = {
   title: "Youtube link",
   placeholder: "Past link...",
-  password: true
+  password: true,
 }

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from "react"
 import telegramIcon from "../../../assets/social/telegram.png"
 import discordIcon from "../../../assets/social/discord.png"

@@ -1,13 +1,14 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from "react"
-import VideoFormTemplate from "./videoFormTemplate";
+import VideoFormTemplate from "./videoFormTemplate"
 
 export default {
   title: "partials/videoFormTemplate",
   component: VideoFormTemplate,
   argTypes: {
-    show: {control: "boolean"},
-    isVideoForm: {control: "boolean"},
-  }
+    show: { control: "boolean" },
+    isVideoForm: { control: "boolean" },
+  },
 }
 
 export function AddVideoForm(args) {

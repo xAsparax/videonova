@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from "react"
 import Header from "./header"
 
@@ -6,11 +7,11 @@ export default {
   component: Header,
   argTypes: {
     isAuthorized: { boolean: { action: false } },
-  }
+  },
 }
 
 export function UnauthorizedHeader(args) {
-  return <Header {...args}/>
+  return <Header {...args} />
 }
 
 UnauthorizedHeader.args = {
@@ -18,7 +19,7 @@ UnauthorizedHeader.args = {
 }
 
 export function AuthorizedHeader(args) {
-  return <Header {...args}/>
+  return <Header {...args} />
 }
 
 AuthorizedHeader.args = {

@@ -4,13 +4,14 @@ import InputField from "../inputField/inputField"
 import TextField from "../textField/textField"
 import "./addContentForm.css"
 
-export default function AddContentForm() {
+export default function AddContentForm({error}) {
 
   return (
     <div className="addContentForm">
       <div className="addContentForm__heading">
         <Heading weight="1" color="black">Add <mark className="red">new</mark> video</Heading>
       </div>
+      {error && <div className="addContentForm__errMessage">{error}</div>}
       <InputField id="video-link" title="Youtube link" placeholder="Past link..."/>
       <InputField id="video-name" title="Name of video" placeholder="Type name..."/>
       <TextField id="video-description" title="Description" placeholder="Type description..."/>

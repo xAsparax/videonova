@@ -1,4 +1,4 @@
-import React from "react"
+/* eslint-disable no-param-reassign */
 import { createSlice } from "@reduxjs/toolkit"
 import telegram from "../../../assets/social/telegram.png"
 import discord from "../../../assets/social/discord.png"
@@ -6,7 +6,8 @@ import twitter from "../../../assets/social/twitter.png"
 
 const siteInfoSlice = createSlice({
   initialState: {
-    siteIntro: "Create videos with a single click. Add subtitles, transcribe audio and more.",
+    siteIntro:
+      "Create videos with a single click. Add subtitles, transcribe audio and more.",
     footerText: "All Rights Reserved 2022",
     social: [
       { name: telegram, to: "https://web.telegram.org" },
@@ -32,9 +33,10 @@ const siteInfoSlice = createSlice({
     hideLoading(state) {
       state.loading = false
     },
-  }
+  },
 })
 
-const reducer = siteInfoSlice.reducer
-const { changeSiteIntro, changeFooterText, changeSocial } = siteInfoSlice.actions
+const { reducer } = siteInfoSlice
+const { changeSiteIntro, changeFooterText, changeSocial } =
+  siteInfoSlice.actions
 export { reducer, changeSiteIntro, changeFooterText, changeSocial }

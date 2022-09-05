@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from "react"
 import CardUserInfoCounter from "./cardUserInfoCounter"
 import heart from "../../../assets/icons/heart.png"

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from "react"
 import AddVideoBlock from "./addVideoBlock"
 
@@ -6,11 +7,11 @@ export default {
   component: AddVideoBlock,
   argTypes: {
     loading: { control: "boolean" },
-  }
+  },
 }
 
 export function VideoLoading(args) {
-  return <AddVideoBlock {...args}/>
+  return <AddVideoBlock {...args} />
 }
 
 VideoLoading.args = {
@@ -18,7 +19,7 @@ VideoLoading.args = {
 }
 
 export function VideoLoaded(args) {
-  return <AddVideoBlock {...args}/>
+  return <AddVideoBlock {...args} />
 }
 
 VideoLoaded.args = {

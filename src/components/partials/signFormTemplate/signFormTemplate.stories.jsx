@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from "react"
 import SignFormTemplate from "./signFormTemplate"
 
@@ -5,9 +6,9 @@ export default {
   title: "partials/SignFormTemplate",
   component: SignFormTemplate,
   argTypes: {
-    show: {control: "boolean"},
-    isSignUpForm: {control: "boolean"},
-  }
+    show: { control: "boolean" },
+    isSignUpForm: { control: "boolean" },
+  },
 }
 
 export function SignUpForm(args) {

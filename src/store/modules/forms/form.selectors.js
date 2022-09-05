@@ -7,16 +7,13 @@ export const selectIsSignUp = createSelector(
   ({ isSignUp }) => isSignUp
 )
 
-export const selectShow = createSelector(
-  rootSelector,
-  ({ show }) => show
-)
+export const selectShow = createSelector(rootSelector, ({ show }) => show)
 
 export const selectFormData = createSelector(
   rootSelector,
-  ({ isSignUp, username, password, passwordCheck}) => {
-    const data = {username: username, password: password}
-    if (isSignUp) data["passwordCheck"] = passwordCheck
+  ({ isSignUp, username, password, passwordCheck }) => {
+    const data = { username, password }
+    if (isSignUp) data.passwordCheck = passwordCheck
     return data
   }
 )

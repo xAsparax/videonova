@@ -1,4 +1,5 @@
-import {createSlice} from "@reduxjs/toolkit"
+/* eslint-disable no-param-reassign */
+import { createSlice } from "@reduxjs/toolkit"
 
 // {
 //   "id": "aa38a317e1e227794e9947a30e8de6f2",
@@ -14,7 +15,7 @@ const formsSlice = createSlice({
     show: false,
     username: null,
     password: null,
-    passwordCheck: null
+    passwordCheck: null,
   },
   name: "forms",
   reducers: {
@@ -22,18 +23,18 @@ const formsSlice = createSlice({
       state.isSignUp = action.payload.isSignUp
       state.show = true
     },
-    hide(state, action) {
+    hide(state) {
       state.show = false
     },
     update(state, action) {
       state.username = action.payload.username
       state.password = action.payload.password
       if (state.isSignUp) state.passwordCheck = action.payload.passwordCheck
-    }
-  }
+    },
+  },
 })
 
-const reducer = formsSlice.reducer
-const {show, hide, update} = formsSlice.actions
+const { reducer } = formsSlice
+const { show, hide, update } = formsSlice.actions
 
 export { reducer, show, hide, update }

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from "react"
 import Spinner from "./spinner"
 
@@ -6,18 +7,17 @@ export default {
   component: Spinner,
   argTypes: {
     big: { control: "boolean" },
-  }
+  },
 }
 
 export function SmallSpinner(args) {
-  return <Spinner {...args}/>
+  return <Spinner {...args} />
 }
 
-SmallSpinner.args = {
-}
+SmallSpinner.args = {}
 
 export function BigSpinner(args) {
-  return <Spinner {...args}/>
+  return <Spinner {...args} />
 }
 
 BigSpinner.args = {

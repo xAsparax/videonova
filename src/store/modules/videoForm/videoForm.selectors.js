@@ -7,10 +7,7 @@ export const selectIsVideoForm = createSelector(
   ({ isVideoForm }) => isVideoForm
 )
 
-export const selectShow = createSelector(
-  rootSelector,
-  ({ show }) => show
-)
+export const selectShow = createSelector(rootSelector, ({ show }) => show)
 
 export const selectVideoLoading = createSelector(
   [rootSelector],
@@ -22,15 +19,12 @@ export const selectLoadSuccess = createSelector(
   ({ success }) => success
 )
 
-export const selectError = createSelector(
-  [rootSelector],
-  ({ error }) => error
-)
+export const selectError = createSelector([rootSelector], ({ error }) => error)
 
 export const selectVideoFormData = createSelector(
   rootSelector,
-  ({ isVideoForm, url, title, description}) => {
-    const data = {url: url, title: title, description: description}
+  ({ isVideoForm, url, title, description }) => {
+    const data = { url, title, description }
     return isVideoForm && data
   }
 )

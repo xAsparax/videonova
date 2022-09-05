@@ -11,12 +11,9 @@ export const rootSelector = (state) => state.users
 // ]
 //
 
-export const selectUsers = createSelector(
-  rootSelector,
-  (state) => Object.values (state)
+export const selectUsers = createSelector(rootSelector, (state) =>
+  Object.values(state)
 )
 
-export const selectUserByID = (id) => createSelector(
-  rootSelector,
-  (state) => state[id]
-)
+export const selectUserByID = (id) =>
+  createSelector(rootSelector, (state) => state[id])

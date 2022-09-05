@@ -1,3 +1,6 @@
+/* eslint-disable no-param-reassign */
+import { createSlice } from "@reduxjs/toolkit"
+
 // [
 //   {
 //     "url": "https://www.youtube.com/watch?v=JCOJS1wWmeo",
@@ -7,29 +10,27 @@
 //     "userId": "string"
 //   }
 // ]
-import {createSlice} from "@reduxjs/toolkit"
 
 const videosListSlice = createSlice({
-  initialState: {
-  },
+  initialState: {},
   name: "videos",
   reducers: {
     load(state) {
       state = {}
     },
     add(state, action) {
-      action.payload.forEach(video => {
+      action.payload.forEach((video) => {
         if (state[video.userId] === undefined) state[video.userId] = {}
         state[video.userId][video.id] = video
       })
     },
     remove(state, action) {
-      action.payload.forEach(video_id => delete state[video_id])
-    }
-  }
+      action.payload.forEach((video_id) => delete state[video_id])
+    },
+  },
 })
 
-const reducer = videosListSlice.reducer
-const {load, add, remove, upload } = videosListSlice.actions
+const { reducer } = videosListSlice
+const { load, add, remove, upload } = videosListSlice.actions
 
 export { reducer, load, add, remove, upload }

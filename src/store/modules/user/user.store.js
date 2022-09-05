@@ -1,4 +1,5 @@
-import {createSlice} from "@reduxjs/toolkit"
+/* eslint-disable no-param-reassign */
+import { createSlice } from "@reduxjs/toolkit"
 
 // {
 //   "id": "aa38a317e1e227794e9947a30e8de6f2",
@@ -12,11 +13,11 @@ const userSlice = createSlice({
   initialState: {
     authorized: false,
     error: null,
-    userInfo: null
+    userInfo: null,
   },
   name: "user",
   reducers: {
-    authorize(state, action) {
+    authorize(state) {
       state.authorized = false
       state.error = null
     },
@@ -32,11 +33,12 @@ const userSlice = createSlice({
       state.authorized = false
       state.error = null
       state.userInfo = null
-    }
-  }
+    },
+  },
 })
 
-const reducer = userSlice.reducer
-const {signUp, authorize, authSuccess, authFailure, logout} = userSlice.actions
+const { reducer } = userSlice
+const { signUp, authorize, authSuccess, authFailure, logout } =
+  userSlice.actions
 
 export { reducer, signUp, authorize, authSuccess, authFailure, logout }

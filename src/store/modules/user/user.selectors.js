@@ -15,12 +15,12 @@ export const selectAuthorized = createSelector(
 
 export const selectUserId = createSelector(
   rootSelector,
-  ({ userInfo }) => userInfo && userInfo['id']
+  ({ userInfo }) => userInfo && userInfo.id
 )
 
 export const selectUserName = createSelector(
   rootSelector,
-  ({ userInfo }) => userInfo && userInfo['userName']
+  ({ userInfo }) => userInfo && userInfo.userName
 )
 
 export const selectUserImage = createSelector(
@@ -30,7 +30,7 @@ export const selectUserImage = createSelector(
 
 export const selectUserToken = createSelector(
   rootSelector,
-  ({userInfo}) => userInfo && userInfo.authToken
+  ({ userInfo }) => userInfo && userInfo.authToken
 )
 
 export const selectUserError = createSelector(
